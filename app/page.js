@@ -36,6 +36,13 @@ const projects = [
     github: 'https://github.com/Taksh1213/hotel-frontend',
     liveDemo: 'https://hotel-frontend-green.vercel.app/',
   },
+  {
+    title: 'My Portfolio',
+    description: 'Personal portfolio website built with Next.js and Tailwind CSS. Showcases skills, projects, contact options, and live deployment on Vercel. Includes animated sections, icon-based contact links, and a responsive design.',
+    image: '/images/portfolio.png',
+    github: 'https://github.com/Taksh1213/my-portfolio',
+    liveDemo: 'https://taksh-dev.vercel.app/',
+  },
 ];
 
 export default function Home() {
