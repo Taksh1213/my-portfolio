@@ -9,6 +9,7 @@ export const metadata = {
     'Portfolio of Taksh Barot — MERN & React developer. Building full-stack apps with Next.js, Tailwind CSS, Node.js, Express and MongoDB.',
   keywords: ['Taksh Barot', 'MERN', 'React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'Portfolio', 'Full-stack'],
   authors: [{ name: 'Taksh Barot', url: 'https://www.linkedin.com/in/taksh-barot' }],
+  metadataBase: new URL('https://taksh-dev.vercel.app'),
   openGraph: {
     title: 'Taksh Barot — MERN & React Developer',
     description:
@@ -17,7 +18,7 @@ export const metadata = {
     siteName: 'Taksh Barot Portfolio',
     images: [
       {
-        url: '/images/weather-dashboard.png',
+        url: '/images/weather-dashboard.webp',
         width: 1200,
         height: 630,
         alt: 'Taksh Barot Portfolio',
@@ -77,6 +78,8 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="google-site-verification" content="0tBrmiGlRZPSHiHcdwV7S8EzxM2Jh-1gA0DI4NEsTDE" />
         <meta name="keywords" content="Taksh Barot, MERN, React, Next.js, Node.js, Express, MongoDB, Portfolio, Full-stack" />
+        <meta name="theme-color" content="#020617" />
+        <link rel="manifest" href="/site.webmanifest" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body style={{ margin: 0, minHeight: '100vh', backgroundColor: '#020617', color: '#e2e8f0' }}>

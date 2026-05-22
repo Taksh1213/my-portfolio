@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FaExternalLinkAlt, FaGithub, FaEnvelope, FaLinkedin, FaReact, FaNodeJs, FaDatabase, FaWhatsapp } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiHtml5, SiPhp, SiMysql, SiBootstrap } from 'react-icons/si';
 
@@ -20,26 +21,26 @@ const projects = [
   {
     title: 'Weather Dashboard',
     description: 'Frontend built with React.js, backend with Node.js and Express. Features live weather forecasts using weather API and live news updates with news API. Includes responsive design, live search, animated weather cards, and mobile-friendly UI.',
-    image: '/images/weather-dashboard.png',
+    image: '/images/weather-dashboard.webp',
     github: 'https://github.com/Taksh1213/weather-dashboard',
   },
   {
     title: 'Expense Tracker',
     description: 'Backend built with Node.js, Express.js, MongoDB, and cookies for session management. Frontend developed with Next.js, CSS, and Tailwind CSS. Users can create profiles, track income and expenses, view real-time charts, analyze spending patterns, and see detailed expense analytics.',
-    image: '/images/expense-tracker.png',
+    image: '/images/expense-tracker.webp',
     github: 'https://github.com/Taksh1213/expense-tracker-frontend',
   },
   {
     title: 'Hotel Management System',
     description: 'Full-stack MERN app with Node.js, Express.js, MongoDB backend and Next.js frontend. Features admin panel with complete CRUD operations for hotel management. User dashboard for browsing and booking hotels. Integrated Stripe API for secure online payment processing and booking confirmation.',
-    image: '/images/hotel-managment.png',
+    image: '/images/hotel-managment.webp',
     github: 'https://github.com/Taksh1213/hotel-frontend',
     liveDemo: 'https://hotel-frontend-green.vercel.app/',
   },
   {
     title: 'My Portfolio',
     description: 'Personal portfolio website built with Next.js and Tailwind CSS. Showcases skills, projects, contact options, and live deployment on Vercel. Includes animated sections, icon-based contact links, and a responsive design.',
-    image: '/images/portfolio.png',
+    image: '/images/portfolio.webp',
     github: 'https://github.com/Taksh1213/my-portfolio',
     liveDemo: 'https://taksh-dev.vercel.app/',
   },
@@ -180,11 +181,13 @@ export default function Home() {
               {projects.map((project) => (
                 <article key={project.title} className="group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90 p-6 shadow-md shadow-slate-950/10 transition duration-500 hover:-translate-y-2 hover:border-sky-500 hover:bg-slate-900/95 animate-fade-up delay-150">
                   {project.image ? (
-                    <div className="mb-6 overflow-hidden rounded-3xl bg-slate-900/90 shadow-inner shadow-slate-950/20">
-                      <img
+                    <div className="relative mb-6 h-44 overflow-hidden rounded-3xl bg-slate-900/90 shadow-inner shadow-slate-950/20">
+                      <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
-                        className="h-44 w-full object-cover transition duration-500 ease-out group-hover:scale-105"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition duration-500 ease-out group-hover:scale-105"
                       />
                     </div>
                   ) : null}
