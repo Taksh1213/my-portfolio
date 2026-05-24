@@ -29,6 +29,7 @@ const projects = [
     description: 'Backend built with Node.js, Express.js, MongoDB, and cookies for session management. Frontend developed with Next.js, CSS, and Tailwind CSS. Users can create profiles, track income and expenses, view real-time charts, analyze spending patterns, and see detailed expense analytics.',
     image: '/images/expense-tracker.webp',
     github: 'https://github.com/Taksh1213/expense-tracker-frontend',
+     liveDemo: 'https://expense-tracker-taksh.vercel.app/',
   },
   {
     title: 'Hotel Management System',
