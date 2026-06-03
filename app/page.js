@@ -36,7 +36,7 @@ const projects = [
     description: 'Full-stack MERN app with Node.js, Express.js, MongoDB backend and Next.js frontend. Features admin panel with complete CRUD operations for hotel management. User dashboard for browsing and booking hotels. Integrated Stripe API for secure online payment processing and booking confirmation.',
     image: '/images/hotel-managment.webp',
     github: 'https://github.com/Taksh1213/hotel-frontend',
-    liveDemo: 'https://hotel-frontend-green.vercel.app/',
+    liveDemo: 'https://luxstay-hotels.vercel.app/',
   },
   {
     title: 'My Portfolio',
