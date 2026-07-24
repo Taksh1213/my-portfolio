@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaExternalLinkAlt, FaGithub, FaEnvelope, FaLinkedin, FaReact, FaNodeJs, FaDatabase, FaWhatsapp } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, SiHtml5, SiPhp, SiMysql, SiBootstrap } from 'react-icons/si';
 
@@ -97,9 +98,16 @@ export default function Home() {
                 I build modern web apps with React.js, Next.js, Tailwind CSS, Node.js, Express, and MongoDB. I enjoy creating polished portfolio sites, dashboards, and full-stack solutions with smooth animations.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <Link
+                  href="/resume"
+                  target="_blank"
+                  className="inline-flex items-center justify-center rounded-2xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 animate-pulse-slow"
+                >
+                  Download Resume
+                </Link>
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-2xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 animate-pulse-slow"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/90 px-6 py-3 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
                 >
                   Contact Me
                 </a>
