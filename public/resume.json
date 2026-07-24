@@ -1,0 +1,80 @@
+{
+  "personalInfo": {
+    "name": "Taksh Barot",
+    "title": "MERN Stack & React Developer",
+    "email": "takshbarot38@gmail.com",
+    "phone": "+91 9904084040",
+    "whatsapp": "https://wa.me/919904084040",
+    "github": "https://github.com/Taksh1213",
+    "linkedin": "https://www.linkedin.com/in/taksh-barot",
+    "website": "https://taksh-dev.vercel.app",
+    "profilePhoto": "/images/profile-photo.jpeg",
+    "summary": "Enthusiastic and detail-oriented Full Stack Developer specializing in the MERN stack (MongoDB, Express.js, React.js, Node.js) and Next.js. Skilled in developing responsive, modern user interfaces with Tailwind CSS and implementing robust backends. Passionate about building performance-driven web applications and delivering exceptional user experiences."
+  },
+  "education": [
+    {
+      "institution": "SVET College, Jamnagar",
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "period": "2024 - Present",
+      "details": "Currently pursuing BCA degree. Gaining strong foundations in computer programming, database systems, software engineering, and web development methodologies."
+    },
+    {
+      "institution": "High Secondary School (12th Board)",
+      "degree": "HSC (Science/Commerce Stream)",
+      "period": "2022 - 2024",
+      "details": "Completed with an aggregate score of 62.3%."
+    },
+    {
+      "institution": "Secondary School (10th Board)",
+      "degree": "SSC",
+      "period": "2020 - 2022",
+      "details": "Completed with an aggregate score of 68.0%."
+    }
+  ],
+  "skills": [
+    "React.js",
+    "Next.js",
+    "Tailwind CSS",
+    "Bootstrap",
+    "JavaScript",
+    "HTML",
+    "PHP",
+    "MySQL",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Postgres SQL",
+    "React Icons"
+  ],
+  "languages": [
+    "English",
+    "Hindi",
+    "Gujarati"
+  ],
+  "projects": [
+    {
+      "title": "Hotel Management System",
+      "description": "Full-stack MERN app with Node.js, Express.js, MongoDB backend and Next.js frontend. Features admin panel with complete CRUD operations for hotel management. User dashboard for browsing and booking hotels. Integrated Stripe API for secure online payment processing and booking confirmation.",
+      "github": "https://github.com/Taksh1213/hotel-frontend",
+      "liveDemo": "https://luxstay-hotels.vercel.app/"
+    },
+    {
+      "title": "Expense Tracker",
+      "description": "Backend built with Node.js, Express.js, MongoDB, and cookies for session management. Frontend developed with Next.js, CSS, and Tailwind CSS. Users can create profiles, track income and expenses, view real-time charts, analyze spending patterns, and see detailed expense analytics.",
+      "github": "https://github.com/Taksh1213/expense-tracker-frontend",
+      "liveDemo": "https://expense-tracker-taksh.vercel.app/"
+    },
+    {
+      "title": "Weather Dashboard",
+      "description": "Frontend built with React.js, backend with Node.js and Express. Features live weather forecasts using weather API and live news updates with news API. Includes responsive design, live search, animated weather cards, and mobile-friendly UI.",
+      "github": "https://github.com/Taksh1213/weather-dashboard",
+      "liveDemo": ""
+    },
+    {
+      "title": "My Portfolio",
+      "description": "Personal portfolio website built with Next.js and Tailwind CSS. Showcases skills, projects, contact options, and live deployment on Vercel. Includes animated sections, icon-based contact links, and a responsive design.",
+      "github": "https://github.com/Taksh1213/my-portfolio",
+      "liveDemo": "https://taksh-dev.vercel.app/"
+    }
+  ]
+}
