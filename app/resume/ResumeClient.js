@@ -193,6 +193,24 @@ export default function ResumeClient() {
             break-inside: avoid;
           }
 
+          .resume-page .print-education {
+            page-break-before: always;
+            break-before: page;
+          }
+
+          .resume-page .print-projects .print-card {
+            margin: 0 0 4mm !important;
+          }
+
+          .resume-page .print-projects .print-card:last-child {
+            margin-bottom: 0 !important;
+          }
+
+          .resume-page .print-projects .print-card > p {
+            margin-top: 1mm !important;
+            line-height: 1.45 !important;
+          }
+
           .resume-page .print-header-title {
             margin: 0 !important;
             color: #0f172a !important;
@@ -307,7 +325,7 @@ export default function ResumeClient() {
             </div>
           </section>
 
-          <section className="print-section space-y-4">
+          <section className="print-section print-projects space-y-4">
             <SectionHeading icon={FaBriefcase}>Projects</SectionHeading>
 
             <div className="space-y-4">
@@ -351,7 +369,7 @@ export default function ResumeClient() {
             </div>
           </section>
 
-          <section className="print-section space-y-4">
+          <section className="print-section print-education space-y-4">
             <SectionHeading icon={FaGraduationCap}>Education</SectionHeading>
 
             <div className="space-y-4">
