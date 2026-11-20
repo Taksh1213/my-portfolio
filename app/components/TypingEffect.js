@@ -1,73 +1,48 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function TypingEffect({
-  phrases,
-  speed = 100,
-  eraseSpeed = 60,
-  delay = 2000,
-}) {
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [length, setLength] = useState(() => phrases[0]?.length ?? 0);
-  const [deleting, setDeleting] = useState(false);
-
-  const phrase = phrases[phraseIndex % phrases.length] ?? '';
+export default function TypingEffect({ phrases, speed = 100, eraseSpeed = 60, delay = 2000 }) {
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(speed);
 
   useEffect(() => {
-    if (phrases.length < 2 || !phrase) return;
+    let timer;
+    const handleType = () => {
+      const i = loopNum % phrases.length;
+      const fullText = phrases[i];
 
-    const complete = length >= phrase.length;
-    const wait = deleting ? eraseSpeed : complete ? delay : speed;
+      if (!isDeleting) {
+        setText(fullText.substring(0, text.length + 1));
+        setTypingSpeed(speed);
 
-    const timer = window.setTimeout(() => {
-      if (deleting && length > 1) {
-        setLength(length - 1);
-      } else if (deleting) {
-        setPhraseIndex((index) => (index + 1) % phrases.length);
-        setLength(1);
-        setDeleting(false);
-      } else if (complete) {
-        setDeleting(true);
-        setLength(Math.max(1, phrase.length - 1));
+        if (text === fullText) {
+          timer = setTimeout(() => setIsDeleting(true), delay);
+          return;
+        }
       } else {
-        setLength(length + 1);
-      }
-    }, wait);
+        setText(fullText.substring(0, text.length - 1));
+        setTypingSpeed(eraseSpeed);
 
-    return () => window.clearTimeout(timer);
-  }, [phrase, phrases.length, length, deleting, speed, eraseSpeed, delay]);
+        if (text === '') {
+          setIsDeleting(false);
+          setLoopNum(loopNum + 1);
+        }
+      }
+
+      timer = setTimeout(handleType, typingSpeed);
+    };
+
+    timer = setTimeout(handleType, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, typingSpeed, phrases, speed, eraseSpeed, delay]);
 
   return (
-    <span className="inline-grid max-w-full align-top">
-      <span className="sr-only">{phrases[0]}</span>
-
-      {/* Reserve enough space for every role at the current screen width. */}
-      {phrases.map((item, index) => (
-        <span
-          key={index}
-          aria-hidden="true"
-          className="invisible col-start-1 row-start-1"
-        >
-          {item}
-          <span className="ml-0.5 inline-block font-light">|</span>
-        </span>
-      ))}
-
-      <span
-        aria-hidden="true"
-        className="col-start-1 row-start-1 motion-reduce:hidden"
-      >
-        {phrase.slice(0, length)}
-        <span className="ml-0.5 inline-block animate-pulse font-light">|</span>
-      </span>
-
-      <span
-        aria-hidden="true"
-        className="col-start-1 row-start-1 hidden motion-reduce:inline"
-      >
-        {phrases[0]}
-      </span>
+    <span className="inline-block min-h-[1.5em] text-sky-500 dark:text-sky-400 font-semibold">
+      {text}
+      <span className="animate-pulse ml-0.5 font-light">|</span>
     </span>
   );
 }
