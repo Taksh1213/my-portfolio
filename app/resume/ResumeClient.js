@@ -25,11 +25,14 @@ const freshifyProject = {
   github: 'https://github.com/Taksh1213/Freshify',
 };
 
-const sectionHeadingClass =
-  'flex items-center gap-2 border-b border-slate-800 pb-2 print-title';
-
-const contactLinkClass =
-  'flex items-center justify-center gap-2 hover:text-sky-400 transition sm:justify-start print-sub';
+function SectionHeading({ icon: Icon, children }) {
+  return (
+    <div className="print-title flex items-center gap-2 border-b border-slate-800 pb-2">
+      <Icon className="no-print text-lg text-sky-400" aria-hidden="true" />
+      <h2 className="text-xl font-bold text-white">{children}</h2>
+    </div>
+  );
+}
 
 export default function ResumeClient() {
   const { personalInfo, education, skills, languages, projects } = resumeData;
@@ -43,17 +46,53 @@ export default function ResumeClient() {
 
   const resumeProjects = hasFreshify ? projects : [freshifyProject, ...projects];
 
+  const contacts = [
+    {
+      label: 'Email',
+      value: personalInfo.email,
+      href: `mailto:${personalInfo.email}`,
+      icon: FaEnvelope,
+    },
+    {
+      label: 'Phone',
+      value: personalInfo.phone,
+      href: `tel:${personalInfo.phone}`,
+      icon: FaPhone,
+    },
+    {
+      label: 'Portfolio',
+      value: personalInfo.website?.replace(/^https?:\/\//, '').replace(/\/$/, ''),
+      href: personalInfo.website,
+      icon: FaGlobe,
+      external: true,
+    },
+    {
+      label: 'LinkedIn',
+      value: personalInfo.linkedin?.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''),
+      href: personalInfo.linkedin,
+      icon: FaLinkedin,
+      external: true,
+    },
+    {
+      label: 'GitHub',
+      value: personalInfo.github?.replace(/^https?:\/\//, '').replace(/\/$/, ''),
+      href: personalInfo.github,
+      icon: FaGithub,
+      external: true,
+    },
+    {
+      label: 'WhatsApp',
+      value: personalInfo.whatsapp ? 'Chat on WhatsApp' : '',
+      href: personalInfo.whatsapp,
+      icon: FaWhatsapp,
+      external: true,
+    },
+  ];
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      window.print();
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    const timer = window.setTimeout(() => window.print(), 1000);
+    return () => window.clearTimeout(timer);
   }, []);
-
-  function handleDownload() {
-    window.print();
-  }
 
   return (
     <main className="resume-page min-h-screen bg-slate-950 px-4 py-6 text-slate-100 sm:px-6 lg:px-8">
@@ -102,12 +141,12 @@ export default function ResumeClient() {
           }
 
           .resume-page .resume-header {
-            display: block !important;
+            display: flow-root !important;
             margin-bottom: 4mm !important;
             padding-bottom: 3mm !important;
             border-bottom: 1px solid #cbd5e1 !important;
-            break-inside: avoid;
             page-break-inside: avoid;
+            break-inside: avoid;
           }
 
           .resume-page .resume-header-copy {
@@ -123,22 +162,6 @@ export default function ResumeClient() {
             border-radius: 3mm !important;
           }
 
-          .resume-page .resume-contacts {
-            display: block !important;
-            clear: both;
-          }
-
-          .resume-page .resume-contacts a {
-            display: inline-block !important;
-            margin: 0 3mm 1mm 0;
-            overflow-wrap: anywhere;
-          }
-
-          .resume-page .print-grid,
-          .resume-page .print-column {
-            display: block !important;
-          }
-
           .resume-page .print-section {
             margin: 0 0 4mm !important;
           }
@@ -146,41 +169,34 @@ export default function ResumeClient() {
           .resume-page .print-title {
             display: block !important;
             width: 100% !important;
-            box-sizing: border-box;
             margin: 0 0 2mm !important;
             padding: 0 0 1mm !important;
             border-bottom: 1.5pt solid #0284c7 !important;
-            color: #0f172a !important;
-            break-inside: avoid;
             page-break-inside: avoid;
-            break-after: avoid;
+            break-inside: avoid;
             page-break-after: avoid;
+            break-after: avoid;
             print-color-adjust: exact;
             -webkit-print-color-adjust: exact;
           }
 
           .resume-page .print-title h2 {
             margin: 0 !important;
-            font-size: 12pt !important;
             color: #0f172a !important;
+            font-size: 12pt !important;
           }
 
           .resume-page .print-card {
             margin: 0 0 2.5mm !important;
             padding: 0 !important;
-            break-inside: avoid;
             page-break-inside: avoid;
-          }
-
-          .resume-page .print-card h3 {
-            break-after: avoid;
-            page-break-after: avoid;
+            break-inside: avoid;
           }
 
           .resume-page .print-header-title {
             margin: 0 !important;
-            font-size: 21pt !important;
             color: #0f172a !important;
+            font-size: 21pt !important;
           }
 
           .resume-page .print-accent {
@@ -193,14 +209,8 @@ export default function ResumeClient() {
             line-height: 1.35 !important;
           }
 
-          .resume-page .print-links {
-            display: block !important;
-            color: #475569 !important;
-            font-size: 8pt !important;
-            overflow-wrap: anywhere;
-          }
-
-          .resume-page .print-badges {
+          .resume-page .print-badges,
+          .resume-page .resume-contacts {
             display: block !important;
           }
 
@@ -217,39 +227,44 @@ export default function ResumeClient() {
             line-height: 1.25 !important;
             white-space: nowrap;
             vertical-align: top;
-            break-inside: avoid;
             page-break-inside: avoid;
+            break-inside: avoid;
             print-color-adjust: exact;
             -webkit-print-color-adjust: exact;
           }
 
-          .resume-page a {
-            color: #0369a1 !important;
+          .resume-page .resume-contact {
+            display: block !important;
+            margin-bottom: 1mm;
+            overflow-wrap: anywhere;
+            color: #334155 !important;
             text-decoration: none !important;
+            page-break-inside: avoid;
+            break-inside: avoid;
           }
         }
       `}</style>
 
-      {/* Navigation & Actions */}
-      <div className="no-print mx-auto mb-6 flex max-w-4xl items-center justify-between gap-3">
+      <div className="no-print mx-auto mb-6 flex max-w-4xl flex-wrap items-center justify-between gap-3">
         <Link
           href="/"
           className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/80 px-4 py-2 text-sm text-slate-300 transition hover:border-sky-500 hover:text-sky-400"
         >
-          <FaArrowLeft className="h-4 w-4" /> Back to Portfolio
+          <FaArrowLeft className="h-4 w-4" aria-hidden="true" />
+          Back to Portfolio
         </Link>
 
         <button
           type="button"
-          onClick={handleDownload}
+          onClick={() => window.print()}
           className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
         >
-          <FaDownload className="h-4 w-4" /> Download PDF
+          <FaDownload className="h-4 w-4" aria-hidden="true" />
+          Download PDF
         </button>
       </div>
 
       <article className="print-container mx-auto max-w-4xl rounded-3xl border border-slate-800/80 bg-slate-900/80 p-6 shadow-2xl shadow-slate-950/50 backdrop-blur-xl sm:p-10">
-        {/* Header */}
         <header className="resume-header mb-6 flex flex-col items-center gap-6 border-b border-slate-800/80 pb-6 sm:flex-row sm:items-start">
           {personalInfo.profilePhoto && (
             <img
@@ -273,158 +288,136 @@ export default function ResumeClient() {
             <p className="print-sub max-w-3xl text-xs leading-relaxed text-slate-300 sm:text-sm">
               {personalInfo.summary}
             </p>
-
-            <div className="resume-contacts grid grid-cols-1 gap-2 pt-1 text-xs text-slate-400 sm:grid-cols-2 md:grid-cols-3">
-              <a href={`mailto:${personalInfo.email}`} className={contactLinkClass}>
-                <FaEnvelope className="no-print text-sky-400" />
-                <span>{personalInfo.email}</span>
-              </a>
-
-              <a href={`tel:${personalInfo.phone}`} className={contactLinkClass}>
-                <FaPhone className="no-print text-sky-400" />
-                <span>{personalInfo.phone}</span>
-              </a>
-
-              <a href={personalInfo.website} target="_blank" rel="noreferrer" className={contactLinkClass}>
-                <FaGlobe className="no-print text-sky-400" />
-                <span>Portfolio Website</span>
-              </a>
-
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className={contactLinkClass}>
-                <FaLinkedin className="no-print text-sky-400" />
-                <span>linkedin.com/in/taksh-barot</span>
-              </a>
-
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className={contactLinkClass}>
-                <FaGithub className="no-print text-sky-400" />
-                <span>github.com/Taksh1213</span>
-              </a>
-
-              <a href={personalInfo.whatsapp} target="_blank" rel="noreferrer" className={contactLinkClass}>
-                <FaWhatsapp className="no-print text-sky-400" />
-                <span>WhatsApp Chat</span>
-              </a>
-            </div>
           </div>
         </header>
 
-        <div className="print-grid grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-[1.7fr_1fr]">
-          <div className="print-column space-y-6 sm:space-y-8">
-            {/* Projects */}
-            <section className="print-section space-y-4">
-              <div className={sectionHeadingClass}>
-                <FaBriefcase className="no-print text-lg text-sky-400" />
-                <h2 className="text-xl font-bold text-white">Projects</h2>
-              </div>
+        <div className="space-y-8">
+          <section className="print-section space-y-4">
+            <SectionHeading icon={FaCode}>Technical Skills</SectionHeading>
 
-              <div className="space-y-4">
-                {resumeProjects.map((project, index) => (
-                  <div key={index} className="print-card space-y-1">
-                    <div className="flex flex-wrap items-center justify-between gap-1">
-                      <h3 className="print-sub text-sm font-semibold text-slate-100 sm:text-base">
-                        {project.title}
-                      </h3>
+            <div className="print-badges flex flex-wrap gap-1.5">
+              {skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="print-badge rounded-xl border border-slate-800 bg-slate-950 px-2.5 py-1 text-xs text-slate-300"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </section>
 
-                      <div className="no-print flex gap-2 text-[11px]">
-                        {project.github && (
-                          <a href={project.github} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
-                            GitHub
-                          </a>
-                        )}
+          <section className="print-section space-y-4">
+            <SectionHeading icon={FaBriefcase}>Projects</SectionHeading>
 
-                        {project.liveDemo && (
-                          <a href={project.liveDemo} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
-                            Live Demo
-                          </a>
-                        )}
-                      </div>
-                    </div>
+            <div className="space-y-4">
+              {resumeProjects.map((project, index) => (
+                <div key={index} className="print-card space-y-1">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h3 className="print-sub text-sm font-semibold text-slate-100 sm:text-base">
+                      {project.title}
+                    </h3>
 
-                    <p className="print-sub text-xs leading-relaxed text-slate-400 sm:text-sm">
-                      {project.description}
-                    </p>
+                    <div className="no-print flex gap-2 text-xs">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sky-400 hover:underline"
+                        >
+                          GitHub
+                        </a>
+                      )}
 
-                    <div className="print-links hidden space-y-0.5">
-                      {project.github && <div>GitHub: {project.github}</div>}
-                      {project.liveDemo && <div>Live Demo: {project.liveDemo}</div>}
+                      {project.liveDemo && (
+                        <a
+                          href={project.liveDemo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sky-400 hover:underline"
+                        >
+                          Live Demo
+                        </a>
+                      )}
                     </div>
                   </div>
-                ))}
-              </div>
-            </section>
 
-            {/* Education */}
-            <section className="print-section space-y-4">
-              <div className={sectionHeadingClass}>
-                <FaGraduationCap className="no-print text-xl text-sky-400" />
-                <h2 className="text-xl font-bold text-white">Education</h2>
-              </div>
+                  <p className="print-sub text-xs leading-relaxed text-slate-400 sm:text-sm">
+                    {project.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-              <div className="space-y-4">
-                {education.map((edu, index) => (
-                  <div key={index} className="print-card space-y-0.5">
-                    <div className="flex flex-wrap items-start justify-between gap-1">
-                      <h3 className="print-sub text-xs font-semibold text-slate-100 sm:text-sm">
-                        {edu.degree}
-                      </h3>
+          <section className="print-section space-y-4">
+            <SectionHeading icon={FaGraduationCap}>Education</SectionHeading>
 
-                      <span className="print-badge rounded-full border border-sky-900/50 bg-sky-950/50 px-2 py-0.5 text-[10px] text-sky-400">
-                        {edu.period}
-                      </span>
-                    </div>
+            <div className="space-y-4">
+              {education.map((edu, index) => (
+                <div key={index} className="print-card space-y-0.5">
+                  <div className="flex flex-wrap items-start justify-between gap-1">
+                    <h3 className="print-sub text-xs font-semibold text-slate-100 sm:text-sm">
+                      {edu.degree}
+                    </h3>
 
-                    <p className="print-sub text-xs font-medium text-slate-300">
-                      {edu.institution}
-                    </p>
-
-                    <p className="print-sub text-[11px] leading-normal text-slate-400">
-                      {edu.details}
-                    </p>
+                    <span className="print-badge rounded-full border border-sky-900/50 bg-sky-950/50 px-2 py-0.5 text-[10px] text-sky-400">
+                      {edu.period}
+                    </span>
                   </div>
-                ))}
-              </div>
-            </section>
-          </div>
 
-          <div className="print-column space-y-6 sm:space-y-8">
-            {/* Technical Skills */}
-            <section className="print-section space-y-4">
-              <div className={sectionHeadingClass}>
-                <FaCode className="no-print text-lg text-sky-400" />
-                <h2 className="text-xl font-bold text-white">Technical Skills</h2>
-              </div>
+                  <p className="print-sub text-xs font-medium text-slate-300">
+                    {edu.institution}
+                  </p>
+                  <p className="print-sub text-[11px] leading-normal text-slate-400">
+                    {edu.details}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-              <div className="print-badges flex flex-wrap gap-1.5">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="print-badge rounded-xl border border-slate-800 bg-slate-950 px-2.5 py-1 text-xs text-slate-300"
+          <section className="print-section space-y-4">
+            <SectionHeading icon={FaLanguage}>Languages</SectionHeading>
+
+            <div className="print-badges flex flex-wrap gap-2">
+              {languages.map((language) => (
+                <span
+                  key={language}
+                  className="print-badge rounded-xl border border-slate-800/80 bg-slate-950/60 px-3 py-1.5 text-xs text-slate-300"
+                >
+                  {language}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          <section className="print-section space-y-4">
+            <SectionHeading icon={FaEnvelope}>Contact Us</SectionHeading>
+
+            <div className="resume-contacts grid gap-3 sm:grid-cols-2">
+              {contacts
+                .filter((contact) => contact.value)
+                .map(({ label, value, href, icon: Icon, external }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noreferrer' : undefined}
+                    className="resume-contact print-sub flex items-start gap-2 text-sm text-slate-300 transition hover:text-sky-400"
                   >
-                    {skill}
-                  </span>
+                    <Icon
+                      className="no-print mt-0.5 shrink-0 text-sky-400"
+                      aria-hidden="true"
+                    />
+                    <span className="min-w-0 break-words">
+                      <strong>{label}</strong> · {value}
+                    </span>
+                  </a>
                 ))}
-              </div>
-            </section>
-
-            {/* Languages */}
-            <section className="print-section space-y-4">
-              <div className={sectionHeadingClass}>
-                <FaLanguage className="no-print text-xl text-sky-400" />
-                <h2 className="text-xl font-bold text-white">Languages</h2>
-              </div>
-
-              <div className="print-badges grid grid-cols-2 gap-2">
-                {languages.map((lang) => (
-                  <div
-                    key={lang}
-                    className="print-badge rounded-xl border border-slate-800/80 bg-slate-950/60 px-3 py-1.5 text-xs text-slate-300"
-                  >
-                    {lang}
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
+            </div>
+          </section>
         </div>
       </article>
     </main>
