@@ -28,16 +28,23 @@ import {
 import { useTheme } from './components/ThemeProvider';
 import TypingEffect from './components/TypingEffect';
 
+const rolePhrases = [
+  'MERN Stack Developer',
+  'React & Next.js Developer',
+  'Full-Stack Engineer',
+  'BCA Student',
+];
+
 const skillItems = [
   { name: 'React.js', icon: <FaReact className="h-5 w-5 text-sky-500" />, category: 'frontend' },
-  { name: 'Next.js', icon: <SiNextdotjs className="h-5 w-5 text-slate-800 dark:text-slate-100" />, category: 'frontend' },
+  { name: 'Next.js', icon: <SiNextdotjs className="h-5 w-5 text-slate-100" />, category: 'frontend' },
   { name: 'Tailwind CSS', icon: <SiTailwindcss className="h-5 w-5 text-cyan-500" />, category: 'frontend' },
   { name: 'Bootstrap', icon: <SiBootstrap className="h-5 w-5 text-purple-500" />, category: 'frontend' },
   { name: 'JavaScript', icon: <SiJavascript className="h-5 w-5 text-amber-500" />, category: 'frontend' },
   { name: 'HTML', icon: <SiHtml5 className="h-5 w-5 text-orange-500" />, category: 'frontend' },
   { name: 'React Icons', icon: <FaReact className="h-5 w-5 text-sky-500" />, category: 'frontend' },
   { name: 'Node.js', icon: <FaNodeJs className="h-5 w-5 text-emerald-500" />, category: 'backend' },
-  { name: 'Express.js', icon: <SiExpress className="h-5 w-5 text-slate-700 dark:text-slate-200" />, category: 'backend' },
+  { name: 'Express.js', icon: <SiExpress className="h-5 w-5 text-slate-200" />, category: 'backend' },
   { name: 'PHP', icon: <SiPhp className="h-5 w-5 text-violet-500" />, category: 'backend' },
   { name: 'MongoDB', icon: <SiMongodb className="h-5 w-5 text-emerald-600" />, category: 'database' },
   { name: 'MySQL', icon: <SiMysql className="h-5 w-5 text-blue-600" />, category: 'database' },
@@ -98,64 +105,62 @@ export default function Home() {
   );
 
   return (
-    <main className="min-h-screen transition-colors duration-300 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100">
+    <main className="min-h-screen transition-colors duration-300 bg-slate-950 text-slate-100">
       {/* Navbar */}
-      <nav className="sticky top-0 z-30 border-b border-slate-200/80 dark:border-slate-800/70 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl transition-colors duration-300">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
-          <a href="#home" className="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
+      <nav aria-label="Main navigation" className="sticky top-0 z-30 border-b border-slate-800/70 bg-slate-950/95 backdrop-blur-xl transition-colors duration-300">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-1.5 px-3 py-2 sm:px-6 md:flex-row md:justify-between md:gap-4 md:py-4 lg:px-10">
+          <a href="#home" className="shrink-0 text-lg font-semibold tracking-tight text-white">
             Taksh Barot
           </a>
 
-          <div className="flex items-center gap-6">
-            <div className="hidden items-center gap-6 md:flex">
-              <a href="#skills" className="text-sm font-medium text-slate-600 dark:text-slate-300 transition hover:text-sky-500 dark:hover:text-white">
-                Skills
-              </a>
-              <a href="#projects" className="text-sm font-medium text-slate-600 dark:text-slate-300 transition hover:text-sky-500 dark:hover:text-white">
-                Projects
-              </a>
-              <a href="#contact" className="text-sm font-medium text-slate-600 dark:text-slate-300 transition hover:text-sky-500 dark:hover:text-white">
-                Contact
-              </a>
-              <a
-                href="https://www.linkedin.com/in/taksh-barot"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900/80 px-4 py-2 text-sm text-slate-700 dark:text-slate-100 transition hover:border-sky-400 hover:text-sky-500 dark:hover:text-sky-400"
-              >
-                <FaLinkedin className="h-4 w-4 text-sky-500 dark:text-sky-400" /> LinkedIn
-              </a>
-              <a
-                href="https://github.com/Taksh1213"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-900/80 px-4 py-2 text-sm text-slate-700 dark:text-slate-100 transition hover:border-sky-400 hover:text-sky-500 dark:hover:text-sky-400"
-              >
-                <FaGithub className="h-4 w-4" /> GitHub
-              </a>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:justify-end lg:gap-x-6">
+            <a href="#skills" className="py-2 text-xs font-medium sm:text-sm text-slate-300 transition hover:text-white">
+              Skills
+            </a>
+            <a href="#projects" className="py-2 text-xs font-medium sm:text-sm text-slate-300 transition hover:text-white">
+              Projects
+            </a>
+            <a href="#contact" className="py-2 text-xs font-medium sm:text-sm text-slate-300 transition hover:text-white">
+              Contact
+            </a>
+            <a
+              href="https://www.linkedin.com/in/taksh-barot"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 rounded-full md:gap-2 border border-slate-700 bg-slate-900/80 px-2 py-2 text-xs sm:text-sm md:px-4 text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+            >
+              <FaLinkedin aria-hidden="true" className="hidden h-4 w-4 sm:block text-sky-400" /> LinkedIn
+            </a>
+            <a
+              href="https://github.com/Taksh1213"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 rounded-full md:gap-2 border border-slate-700 bg-slate-900/80 px-2 py-2 text-xs sm:text-sm md:px-4 text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+            >
+              <FaGithub aria-hidden="true" className="hidden h-4 w-4 sm:block" /> GitHub
+            </a>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="overflow-hidden px-6 py-10 sm:px-10">
-        <div className="mx-auto max-w-6xl rounded-[2rem] bg-white/70 dark:bg-slate-900/80 p-8 shadow-xl dark:shadow-2xl shadow-slate-200/50 dark:shadow-slate-950/40 border border-slate-200/80 dark:border-white/10 backdrop-blur-xl transition-colors duration-300">
-          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="space-y-6 animate-fade-right">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-500 dark:text-sky-400">
-                <TypingEffect phrases={['MERN Stack Developer', 'React & Next.js Developer', 'Full-Stack Engineer', 'BCA Student']} />
+      <section id="home" className="scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
+        <div className="mx-auto max-w-6xl rounded-[2rem] bg-slate-900/80 p-5 sm:p-8 shadow-2xl shadow-slate-950/40 border border-white/10 backdrop-blur-xl transition-colors duration-300">
+          <div className="grid gap-6 sm:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+            <div className="min-w-0 space-y-5 sm:space-y-6">
+              <p className="break-words text-xs font-semibold uppercase leading-relaxed tracking-[0.2em] sm:tracking-[0.3em] text-sky-400">
+                <TypingEffect phrases={rolePhrases} />
               </p>
 
-              <h1 className="text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-                Hi, I’m <span className="text-sky-500 dark:text-sky-400">Taksh Barot</span>.
+              <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+                Hi, I’m <span className="text-sky-400">Taksh Barot</span>.
               </h1>
 
-              <p className="max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
+              <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
                 I build modern web apps with React.js, Next.js, Tailwind CSS, Node.js, Express, and MongoDB. I enjoy creating polished portfolio sites, dashboards, and full-stack solutions with smooth animations.
               </p>
 
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <Link
                   href="/resume"
                   target="_blank"
@@ -166,7 +171,7 @@ export default function Home() {
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/90 px-6 py-3 text-sm text-slate-700 dark:text-slate-100 transition hover:border-sky-400 hover:text-sky-500 dark:hover:text-sky-400 shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/90 px-6 py-3 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
                 >
                   Contact Me
                 </a>
@@ -175,29 +180,29 @@ export default function Home() {
                   href="https://github.com/Taksh1213"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/90 px-6 py-3 text-sm text-slate-700 dark:text-slate-100 transition hover:border-sky-400 hover:text-sky-500 dark:hover:text-sky-400 shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/90 px-6 py-3 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
                 >
                   <FaGithub className="h-4 w-4" /> View GitHub
                 </a>
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/90 p-8 text-slate-600 dark:text-slate-300 shadow-inner animate-fade-left delay-150 transition-colors duration-300">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
+            <div className="rounded-[2rem] border border-slate-800 bg-slate-950/90 p-5 sm:p-8 text-slate-300 shadow-inner animate-fade-left delay-150 transition-colors duration-300">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
                 What I build
               </p>
 
-              <ul className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
-                <li className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 px-4 py-4 shadow-sm text-slate-700 dark:text-slate-300">
+              <ul className="mt-4 grid gap-3 text-sm min-[390px]:grid-cols-2 sm:mt-6">
+                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   React.js apps with interactive UI
                 </li>
-                <li className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 px-4 py-4 shadow-sm text-slate-700 dark:text-slate-300">
+                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   Next.js landing pages and portfolios
                 </li>
-                <li className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 px-4 py-4 shadow-sm text-slate-700 dark:text-slate-300">
+                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   REST APIs with Node.js and Express
                 </li>
-                <li className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 px-4 py-4 shadow-sm text-slate-700 dark:text-slate-300">
+                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   MongoDB data storage and dashboards
                 </li>
               </ul>
@@ -207,23 +212,23 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="px-6 py-10 sm:px-10">
+      <section id="skills" className="scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-6xl space-y-8">
-          <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-8 shadow-lg dark:shadow-xl shadow-slate-200/50 dark:shadow-slate-950/20 animate-fade-up transition-colors duration-300">
+          <div className="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-500 dark:text-sky-400">Skills</p>
-                <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Skills</p>
+                <h2 className="mt-3 text-3xl font-semibold text-white">
                   Core technologies I use daily
                 </h2>
               </div>
 
-              <p className="max-w-2xl text-slate-600 dark:text-slate-400">
+              <p className="max-w-2xl text-slate-400">
                 I build React.js and Next.js experiences with Tailwind CSS. I also write backend code with Node.js, Express, and MongoDB for full-stack apps.
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div className="mt-8 flex flex-wrap gap-2 border-b border-slate-800 pb-4">
               {['all', 'frontend', 'backend', 'database'].map((filter) => (
                 <button
                   key={filter}
@@ -231,7 +236,7 @@ export default function Home() {
                   className={`px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition ${
                     activeSkillFilter === filter
                       ? 'bg-sky-500 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-950 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
+                      : 'bg-slate-950 hover:bg-slate-800 text-slate-400'
                   }`}
                 >
                   {filter === 'database' ? 'Databases' : filter}
@@ -239,15 +244,15 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-6 grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
               {filteredSkills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/80 px-5 py-6 text-slate-750 dark:text-slate-200 transition hover:-translate-y-1 hover:border-sky-500 hover:bg-white dark:hover:bg-slate-900/95 shadow-sm"
+                  className="group rounded-3xl border border-slate-800 bg-slate-950/80 px-2.5 py-4 text-sm sm:px-5 sm:py-6 sm:text-base text-slate-200 transition hover:-translate-y-1 hover:border-sky-500 hover:bg-slate-900/95 shadow-sm"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="transition-transform group-hover:scale-110">{skill.icon}</span>
-                    <span className="font-medium">{skill.name}</span>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <span className="shrink-0 transition-transform group-hover:scale-110">{skill.icon}</span>
+                    <span className="min-w-0 break-words font-medium">{skill.name}</span>
                   </div>
                 </div>
               ))}
@@ -257,21 +262,21 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="px-6 py-10 sm:px-10">
+      <section id="projects" className="scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-6xl space-y-8">
-          <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-8 shadow-lg dark:shadow-xl shadow-slate-200/50 dark:shadow-slate-950/20 animate-fade-up transition-colors duration-300">
+          <div className="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-500 dark:text-sky-400">Projects</p>
-                <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">Selected work</h2>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Projects</p>
+                <h2 className="mt-3 text-3xl font-semibold text-white">Selected work</h2>
               </div>
 
-              <p className="max-w-xl text-slate-600 dark:text-slate-400">
+              <p className="max-w-xl text-slate-400">
                 These are the types of React and full-stack projects I enjoy building with polished interactions and clean UI.
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div className="mt-8 flex flex-wrap gap-2 border-b border-slate-800 pb-4">
               {[
                 { id: 'all', label: 'All Projects' },
                 { id: 'fullstack', label: 'Full-Stack' },
@@ -283,7 +288,7 @@ export default function Home() {
                   className={`px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition ${
                     activeProjectFilter === tab.id
                       ? 'bg-sky-500 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-950 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
+                      : 'bg-slate-950 hover:bg-slate-800 text-slate-400'
                   }`}
                 >
                   {tab.label}
@@ -295,10 +300,10 @@ export default function Home() {
               {filteredProjects.map((project) => (
                 <article
                   key={project.title}
-                  className="group overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/90 p-6 shadow-sm hover:shadow-md transition duration-500 hover:-translate-y-1.5 hover:border-sky-500 hover:bg-white dark:hover:bg-slate-900/95 animate-fade-up"
+                  className="group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90 p-4 shadow-sm hover:shadow-md sm:p-6 transition duration-500 hover:-translate-y-1.5 hover:border-sky-500 hover:bg-slate-900/95 animate-fade-up"
                 >
                   {project.image ? (
-                    <div className="relative mb-6 h-44 overflow-hidden rounded-3xl bg-slate-100 dark:bg-slate-900/90 shadow-inner border border-slate-200 dark:border-transparent">
+                    <div className="relative mb-5 aspect-video overflow-hidden rounded-3xl bg-slate-900/90 shadow-inner border border-transparent">
                       <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
@@ -309,8 +314,8 @@ export default function Home() {
                     </div>
                   ) : null}
 
-                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{project.title}</h3>
-                  <p className="mt-3 text-slate-600 dark:text-slate-400">{project.description}</p>
+                  <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                  <p className="mt-3 text-slate-400">{project.description}</p>
 
                   {project.github || project.liveDemo ? (
                     <div className="mt-6 flex flex-wrap gap-3">
@@ -319,7 +324,7 @@ export default function Home() {
                           href={project.github}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-750 dark:text-slate-100 transition hover:border-sky-400 hover:text-sky-500 dark:hover:text-sky-400 shadow-sm"
+                          className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
                         >
                           <FaGithub className="h-4 w-4" /> View on GitHub
                         </a>
@@ -330,7 +335,7 @@ export default function Home() {
                           href={project.liveDemo}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-750 dark:text-slate-100 transition hover:border-sky-400 hover:text-sky-500 dark:hover:text-sky-400 shadow-sm"
+                          className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
                         >
                           <FaExternalLinkAlt className="h-4 w-4" /> Live Demo
                         </a>
@@ -345,24 +350,24 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="px-6 pb-16 pt-10 sm:px-10">
-        <div className="mx-auto max-w-6xl rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-8 shadow-lg dark:shadow-xl shadow-slate-200/50 dark:shadow-slate-950/20 animate-fade-up transition-colors duration-300">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-500 dark:text-sky-400">Contact</p>
-          <h2 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">
+      <section id="contact" className="scroll-mt-32 px-4 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-10 lg:px-10">
+        <div className="mx-auto max-w-6xl rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Contact</p>
+          <h2 className="mt-3 text-3xl font-semibold text-white">
             Let’s start your next React project.
           </h2>
-          <p className="mt-4 max-w-xl text-slate-600 dark:text-slate-400 leading-7">
+          <p className="mt-4 max-w-xl text-slate-400 leading-7">
             I’m available for freelance work, portfolio updates, and full-stack web app development. Reach out by email, WhatsApp, or LinkedIn.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3 text-slate-600 dark:text-slate-300">
+          <div className="mt-8 flex flex-wrap items-center gap-3 text-slate-300">
             <a
               href="https://mail.google.com/mail/?view=cm&fs=1&to=takshbarot38@gmail.com"
               target="_blank"
               rel="noreferrer"
               aria-label="Email"
               title="Email: takshbarot38@gmail.com"
-              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-850 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-500 transition shadow-sm"
+              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-900/80 border border-slate-800 hover:text-white hover:bg-sky-500 transition shadow-sm"
             >
               <FaEnvelope className="h-5 w-5" />
             </a>
@@ -384,7 +389,7 @@ export default function Home() {
               rel="noreferrer"
               aria-label="LinkedIn"
               title="LinkedIn"
-              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-850 text-sky-500 dark:text-sky-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition shadow-sm"
+              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-900/80 border border-slate-800 text-sky-400 hover:bg-slate-800 transition shadow-sm"
             >
               <FaLinkedin className="h-5 w-5" />
             </a>
@@ -395,7 +400,7 @@ export default function Home() {
               rel="noreferrer"
               aria-label="GitHub"
               title="GitHub"
-              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-850 text-slate-700 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 transition shadow-sm"
+              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-900/80 border border-slate-800 text-slate-100 hover:bg-slate-800 transition shadow-sm"
             >
               <FaGithub className="h-5 w-5" />
             </a>
@@ -403,27 +408,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-     <footer className="border-t border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 py-8 transition-colors duration-300">
-  <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 text-center text-sm text-slate-500 sm:px-10">
-    <p>Taksh Barot</p>
-
-    <div className="flex items-center justify-center gap-4">
-      <a
-        href="#home"
-        className="text-slate-500 dark:text-slate-400 transition hover:text-sky-500 dark:hover:text-white"
-      >
-        Home
-      </a>
-      <a
-        href="#contact"
-        className="text-slate-500 dark:text-slate-400 transition hover:text-sky-500 dark:hover:text-white"
-      >
-        Contact
-      </a>
-    </div>
-  </div>
-</footer>
+      <footer className="border-t border-slate-800 bg-slate-950/95 px-6 py-8 text-center">
+        <p className="text-sm font-semibold text-slate-100">Taksh Barot</p>
+        <nav aria-label="Footer navigation" className="mt-3 flex justify-center gap-4 text-sm text-slate-400">
+          <a href="#home" className="transition hover:text-white">
+            Home
+          </a>
+          <a href="#contact" className="transition hover:text-white">
+            Contact
+          </a>
+        </nav>
+      </footer>
     </main>
   );
 }
