@@ -9,6 +9,7 @@
     "linkedin": "https://www.linkedin.com/in/taksh-barot",
     "website": "https://taksh-dev.vercel.app",
     "profilePhoto": "/images/profile-photo.jpeg",
+    "address": "Patel Park, Kunal Park 2, behind Matru Prem Residency, Jamnagar, Gujarat 361005",
     "summary": "Enthusiastic and detail-oriented Full Stack Developer specializing in the MERN stack (MongoDB, Express.js, React.js, Node.js) and Next.js. Skilled in developing responsive, modern user interfaces with Tailwind CSS and implementing robust backends. Passionate about building performance-driven web applications and delivering exceptional user experiences."
   },
   "education": [
@@ -19,18 +20,19 @@
       "details": "Currently pursuing BCA degree. Gaining strong foundations in computer programming, database systems, software engineering, and web development methodologies."
     },
     {
-      "institution": "High Secondary School (12th Board)",
+      "institution": "Noorie High School",
       "degree": "HSC (Science/Commerce Stream)",
       "period": "2022 - 2024",
       "details": "Completed with an aggregate score of 62.3%."
     },
     {
-      "institution": "Secondary School (10th Board)",
+      "institution": "Kendriya Vidyalaya No. 2 Infantry Lines, Jamnagar",
       "degree": "SSC",
       "period": "2020 - 2022",
       "details": "Completed with an aggregate score of 68.0%."
     }
   ],
+  "experience": "Fresher seeking an internship or entry-level software development role where I can contribute my web development skills.",
   "skills": [
     "React.js",
     "Next.js",
