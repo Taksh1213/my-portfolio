@@ -15,7 +15,6 @@ import {
   FaGraduationCap,
   FaCode,
   FaLanguage,
-  FaMapMarkerAlt,
 } from 'react-icons/fa';
 import resumeData from '../../public/resume.json';
 
@@ -28,16 +27,15 @@ const freshifyProject = {
 
 function SectionHeading({ icon: Icon, children }) {
   return (
-    <div className="resume-section-heading print-title flex items-center gap-2 border-b border-slate-800 pb-2">
+    <div className="print-title flex items-center gap-2 border-b border-slate-800 pb-2">
       <Icon className="no-print text-lg text-sky-400" aria-hidden="true" />
-      <h2 className="resume-section-title text-xl font-bold text-white">{children}</h2>
+      <h2 className="text-xl font-bold text-white">{children}</h2>
     </div>
   );
 }
 
 export default function ResumeClient() {
-  const { personalInfo, education, experience, skills, languages, projects } =
-    resumeData;
+  const { personalInfo, education, skills, languages, projects } = resumeData;
 
   const hasFreshify = projects.some(
     (project) =>
@@ -173,7 +171,7 @@ export default function ResumeClient() {
             width: 100% !important;
             margin: 0 0 2mm !important;
             padding: 0 0 1mm !important;
-            border-bottom: 1.5pt solid #bd563b !important;
+            border-bottom: 1.5pt solid #0284c7 !important;
             page-break-inside: avoid;
             break-inside: avoid;
             page-break-after: avoid;
@@ -184,15 +182,13 @@ export default function ResumeClient() {
 
           .resume-page .print-title h2 {
             margin: 0 !important;
-            color: #25241f !important;
+            color: #0f172a !important;
             font-size: 12pt !important;
           }
 
           .resume-page .print-card {
             margin: 0 0 2.5mm !important;
             padding: 0 !important;
-            border: 0 !important;
-            background: transparent !important;
             page-break-inside: avoid;
             break-inside: avoid;
           }
@@ -217,12 +213,12 @@ export default function ResumeClient() {
 
           .resume-page .print-header-title {
             margin: 0 !important;
-            color: #25241f !important;
+            color: #0f172a !important;
             font-size: 21pt !important;
           }
 
           .resume-page .print-accent {
-            color: #bd563b !important;
+            color: #0369a1 !important;
           }
 
           .resume-page .print-sub {
@@ -241,7 +237,7 @@ export default function ResumeClient() {
             box-sizing: border-box;
             margin: 0 1.5mm 1.5mm 0 !important;
             padding: 0.5mm 1.5mm !important;
-            border: 1px solid #bd563b !important;
+            border: 1px solid #0284c7 !important;
             border-radius: 5px !important;
             background: #fff !important;
             color: #1e293b !important;
@@ -267,10 +263,10 @@ export default function ResumeClient() {
         }
       `}</style>
 
-      <div className="resume-toolbar no-print mx-auto mb-6 flex max-w-4xl flex-wrap items-center justify-between gap-3">
+      <div className="no-print mx-auto mb-6 flex max-w-4xl flex-wrap items-center justify-between gap-3">
         <Link
           href="/"
-          className="resume-toolbar-link inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/80 px-4 py-2 text-sm text-slate-300 transition hover:border-sky-500 hover:text-sky-400"
+          className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/80 px-4 py-2 text-sm text-slate-300 transition hover:border-sky-500 hover:text-sky-400"
         >
           <FaArrowLeft className="h-4 w-4" aria-hidden="true" />
           Back to Portfolio
@@ -279,14 +275,14 @@ export default function ResumeClient() {
         <button
           type="button"
           onClick={() => window.print()}
-          className="resume-download inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
+          className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
         >
           <FaDownload className="h-4 w-4" aria-hidden="true" />
           Download PDF
         </button>
       </div>
 
-      <article className="resume-sheet print-container mx-auto max-w-4xl rounded-3xl border border-slate-800/80 bg-slate-900/80 p-6 shadow-2xl shadow-slate-950/50 backdrop-blur-xl sm:p-10">
+      <article className="print-container mx-auto max-w-4xl rounded-3xl border border-slate-800/80 bg-slate-900/80 p-6 shadow-2xl shadow-slate-950/50 backdrop-blur-xl sm:p-10">
         <header className="resume-header mb-6 flex flex-col items-center gap-6 border-b border-slate-800/80 pb-6 sm:flex-row sm:items-start">
           {personalInfo.profilePhoto && (
             <img
@@ -298,7 +294,6 @@ export default function ResumeClient() {
 
           <div className="resume-header-copy flex-1 space-y-2 text-center sm:text-left">
             <div>
-              <p className="resume-overline no-print">Curriculum vitae · 2026</p>
               <h1 className="print-header-title text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 {personalInfo.name}
               </h1>
@@ -322,7 +317,7 @@ export default function ResumeClient() {
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="resume-badge print-badge rounded-xl border border-slate-800 bg-slate-950 px-2.5 py-1 text-xs text-slate-300"
+                  className="print-badge rounded-xl border border-slate-800 bg-slate-950 px-2.5 py-1 text-xs text-slate-300"
                 >
                   {skill}
                 </span>
@@ -337,7 +332,7 @@ export default function ResumeClient() {
               {resumeProjects.map((project, index) => (
                 <div key={index} className="print-card space-y-1">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="resume-entry-title print-sub text-sm font-semibold text-slate-100 sm:text-base">
+                    <h3 className="print-sub text-sm font-semibold text-slate-100 sm:text-base">
                       {project.title}
                     </h3>
 
@@ -381,11 +376,11 @@ export default function ResumeClient() {
               {education.map((edu, index) => (
                 <div key={index} className="print-card space-y-0.5">
                   <div className="flex flex-wrap items-start justify-between gap-1">
-                    <h3 className="resume-entry-title print-sub text-xs font-semibold text-slate-100 sm:text-sm">
+                    <h3 className="print-sub text-xs font-semibold text-slate-100 sm:text-sm">
                       {edu.degree}
                     </h3>
 
-                    <span className="resume-badge print-badge rounded-full border border-sky-900/50 bg-sky-950/50 px-2 py-0.5 text-[10px] text-sky-400">
+                    <span className="print-badge rounded-full border border-sky-900/50 bg-sky-950/50 px-2 py-0.5 text-[10px] text-sky-400">
                       {edu.period}
                     </span>
                   </div>
@@ -401,16 +396,6 @@ export default function ResumeClient() {
             </div>
           </section>
 
-          {experience && (
-            <section className="print-section space-y-4">
-              <SectionHeading icon={FaBriefcase}>Experience</SectionHeading>
-
-              <p className="print-sub text-sm leading-relaxed text-slate-300">
-                {experience}
-              </p>
-            </section>
-          )}
-
           <section className="print-section space-y-4">
             <SectionHeading icon={FaLanguage}>Languages</SectionHeading>
 
@@ -418,7 +403,7 @@ export default function ResumeClient() {
               {languages.map((language) => (
                 <span
                   key={language}
-                  className="resume-badge print-badge rounded-xl border border-slate-800/80 bg-slate-950/60 px-3 py-1.5 text-xs text-slate-300"
+                  className="print-badge rounded-xl border border-slate-800/80 bg-slate-950/60 px-3 py-1.5 text-xs text-slate-300"
                 >
                   {language}
                 </span>
@@ -427,7 +412,7 @@ export default function ResumeClient() {
           </section>
 
           <section className="print-section space-y-4">
-            <SectionHeading icon={FaEnvelope}>Contact</SectionHeading>
+            <SectionHeading icon={FaEnvelope}>Contact Us</SectionHeading>
 
             <div className="resume-contacts grid gap-3 sm:grid-cols-2">
               {contacts
@@ -449,18 +434,6 @@ export default function ResumeClient() {
                     </span>
                   </a>
                 ))}
-
-              {personalInfo.address && (
-                <address className="resume-contact print-sub flex items-start gap-2 text-sm not-italic text-slate-300 sm:col-span-2">
-                  <FaMapMarkerAlt
-                    className="no-print mt-0.5 shrink-0 text-sky-400"
-                    aria-hidden="true"
-                  />
-                  <span className="min-w-0 break-words">
-                    <strong>Address</strong> · {personalInfo.address}
-                  </span>
-                </address>
-              )}
             </div>
           </section>
         </div>
