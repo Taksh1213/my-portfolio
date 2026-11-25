@@ -15,6 +15,7 @@ import {
   FaGraduationCap,
   FaCode,
   FaLanguage,
+  FaMapMarkerAlt,
 } from 'react-icons/fa';
 import resumeData from '../../public/resume.json';
 
@@ -35,7 +36,8 @@ function SectionHeading({ icon: Icon, children }) {
 }
 
 export default function ResumeClient() {
-  const { personalInfo, education, skills, languages, projects } = resumeData;
+  const { personalInfo, education, experience, skills, languages, projects } =
+    resumeData;
 
   const hasFreshify = projects.some(
     (project) =>
@@ -396,6 +398,16 @@ export default function ResumeClient() {
             </div>
           </section>
 
+          {experience && (
+            <section className="print-section space-y-4">
+              <SectionHeading icon={FaBriefcase}>Experience</SectionHeading>
+
+              <p className="print-sub text-sm leading-relaxed text-slate-300">
+                {experience}
+              </p>
+            </section>
+          )}
+
           <section className="print-section space-y-4">
             <SectionHeading icon={FaLanguage}>Languages</SectionHeading>
 
@@ -434,6 +446,18 @@ export default function ResumeClient() {
                     </span>
                   </a>
                 ))}
+
+              {personalInfo.address && (
+                <address className="resume-contact print-sub flex items-start gap-2 text-sm not-italic text-slate-300 sm:col-span-2">
+                  <FaMapMarkerAlt
+                    className="no-print mt-0.5 shrink-0 text-sky-400"
+                    aria-hidden="true"
+                  />
+                  <span className="min-w-0 break-words">
+                    <strong>Address</strong> · {personalInfo.address}
+                  </span>
+                </address>
+              )}
             </div>
           </section>
         </div>
