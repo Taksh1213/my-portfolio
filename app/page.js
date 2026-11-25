@@ -211,7 +211,7 @@ export default function Home() {
                 <Link
                   href="/resume"
                   target="_blank"
-                  className="portfolio-primary inline-flex items-center justify-center rounded-2xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 shadow-md shadow-sky-500/20"
+                  className="portfolio-primary inline-flex items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold text-white transition shadow-md"
                 >
                   View my resume <span aria-hidden="true">↗</span>
                 </Link>
@@ -354,7 +354,7 @@ export default function Home() {
               {filteredProjects.map((project) => (
                 <article
                   key={project.title}
-                  className="portfolio-project-card group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90 p-4 shadow-sm hover:shadow-md sm:p-6 transition duration-500 hover:-translate-y-1.5 hover:bg-slate-900/95"
+                  className="portfolio-project-card group overflow-hidden rounded-3xl border border-slate-800 p-4 shadow-sm hover:shadow-md sm:p-6 transition duration-500 hover:-translate-y-1.5"
                 >
                   {project.image ? (
                     <div className="portfolio-project-image relative mb-5 aspect-video overflow-hidden rounded-3xl bg-slate-900/90 shadow-inner border border-transparent">
