@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 :root {
+  color-scheme: light;
+  font-family: 'Aptos', 'Segoe UI Variable', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+  --bg-radial: radial-gradient(circle at top, rgba(14, 165, 233, 0.1), transparent 30%);
+  --bg-linear: linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+}
+
+html.dark {
   color-scheme: dark;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --bg-radial: radial-gradient(circle at top, rgba(56, 189, 248, 0.14), transparent 30%);
+  --bg-linear: linear-gradient(180deg, #020617 0%, #020617 100%);
 }
 
 html {
@@ -14,17 +22,79 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.14), transparent 30%),
-    linear-gradient(180deg, #020617 0%, #020617 100%);
+  background: var(--bg-radial), var(--bg-linear);
+  background-attachment: fixed;
+  font-family: inherit;
+  font-feature-settings: 'kern';
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
   box-sizing: border-box;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
 ::selection {
   color: #ffffff;
   background: #0ea5e9;
+}
+
+html:not(.dark) body {
+  color: #1e293b;
+}
+
+html:not(.dark) main {
+  background-color: transparent;
+  color: #1e293b;
+}
+
+html:not(.dark) main[class*="bg-slate-950"] {
+  background-color: transparent;
+}
+
+html:not(.dark) [class*="bg-slate-950"],
+html:not(.dark) [class*="bg-slate-900"] {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+html:not(.dark) [class*="bg-slate-800"] {
+  background-color: #edf2f7;
+}
+
+html:not(.dark) [class*="border-slate-800"],
+html:not(.dark) [class*="border-slate-700"] {
+  border-color: #dbe4ee;
+}
+
+html:not(.dark) [class*="text-white"],
+html:not(.dark) [class*="text-slate-100"],
+html:not(.dark) [class*="text-slate-200"] {
+  color: #172033;
+}
+
+html:not(.dark) [class*="text-slate-300"],
+html:not(.dark) [class*="text-slate-400"] {
+  color: #526174;
+}
+
+html:not(.dark) [class*="hover:bg-slate-900"]:hover,
+html:not(.dark) [class*="hover:bg-slate-800"]:hover {
+  background-color: #e7f2fc;
+}
+
+html:not(.dark) [class*="hover:text-white"]:hover {
+  color: #172033;
+}
+
+html:not(.dark) nav[aria-label="Main navigation"],
+html:not(.dark) footer {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+*:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
 }
 
 @keyframes fade-up {
@@ -97,5 +167,16 @@ body {
 .animate-fade-right.delay-300,
 .animate-fade-left.delay-300 {
   animation-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 

@@ -13,6 +13,8 @@ import {
   FaWhatsapp,
   FaSun,
   FaMoon,
+  FaBars,
+  FaTimes,
 } from 'react-icons/fa';
 import {
   SiNextdotjs,
@@ -95,6 +97,9 @@ export default function Home() {
   const { theme, toggleTheme } = useTheme();
   const [activeProjectFilter, setActiveProjectFilter] = useState('all');
   const [activeSkillFilter, setActiveSkillFilter] = useState('all');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
 
   const filteredProjects = projects.filter((project) =>
     activeProjectFilter === 'all' || project.category === activeProjectFilter
@@ -108,37 +113,58 @@ export default function Home() {
     <main className="min-h-screen transition-colors duration-300 bg-slate-950 text-slate-100">
       {/* Navbar */}
       <nav aria-label="Main navigation" className="sticky top-0 z-30 border-b border-slate-800/70 bg-slate-950/95 backdrop-blur-xl transition-colors duration-300">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-1.5 px-3 py-2 sm:px-6 md:flex-row md:justify-between md:gap-4 md:py-4 lg:px-10">
-          <a href="#home" className="shrink-0 text-lg font-semibold tracking-tight text-white">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 md:py-4 lg:px-10">
+          <a href="#home" onClick={closeMenu} className="shrink-0 text-lg font-semibold tracking-tight text-white">
             Taksh Barot
           </a>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:justify-end lg:gap-x-6">
-            <a href="#skills" className="py-2 text-xs font-medium sm:text-sm text-slate-300 transition hover:text-white">
-              Skills
-            </a>
-            <a href="#projects" className="py-2 text-xs font-medium sm:text-sm text-slate-300 transition hover:text-white">
-              Projects
-            </a>
-            <a href="#contact" className="py-2 text-xs font-medium sm:text-sm text-slate-300 transition hover:text-white">
-              Contact
-            </a>
-            <a
-              href="https://www.linkedin.com/in/taksh-barot"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 rounded-full md:gap-2 border border-slate-700 bg-slate-900/80 px-2 py-2 text-xs sm:text-sm md:px-4 text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 transition hover:border-sky-400 hover:text-sky-400 ${theme === 'dark' ? 'text-amber-300' : 'text-slate-700'}`}
             >
-              <FaLinkedin aria-hidden="true" className="hidden h-4 w-4 sm:block text-sky-400" /> LinkedIn
-            </a>
-            <a
-              href="https://github.com/Taksh1213"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 rounded-full md:gap-2 border border-slate-700 bg-slate-900/80 px-2 py-2 text-xs sm:text-sm md:px-4 text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+              {theme === 'dark' ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((isOpen) => !isOpen)}
+              aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={menuOpen}
+              aria-controls="primary-navigation"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 text-slate-100 transition hover:border-sky-400 hover:text-sky-400 md:hidden"
             >
-              <FaGithub aria-hidden="true" className="hidden h-4 w-4 sm:block" /> GitHub
-            </a>
+              {menuOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
+            </button>
+          </div>
+
+          <div
+            id="primary-navigation"
+            className={`${menuOpen ? 'flex' : 'hidden'} w-full flex-col gap-1 border-t border-slate-800 pt-3 md:flex md:w-auto md:flex-row md:items-center md:gap-5 md:border-0 md:pt-0`}
+          >
+            <a href="#skills" onClick={closeMenu} className="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white">Skills</a>
+            <a href="#projects" onClick={closeMenu} className="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white">Projects</a>
+            <a href="#contact" onClick={closeMenu} className="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white">Contact</a>
+            <div className="flex gap-2 pt-2 md:pt-0">
+              <a
+                href="https://www.linkedin.com/in/taksh-barot"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+              >
+                <FaLinkedin aria-hidden="true" className="h-4 w-4 text-sky-400" /> LinkedIn
+              </a>
+              <a
+                href="https://github.com/Taksh1213"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+              >
+                <FaGithub aria-hidden="true" className="h-4 w-4" /> GitHub
+              </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -418,6 +444,9 @@ export default function Home() {
             Contact
           </a>
         </nav>
+        <p className="mt-5 text-xs text-slate-500">
+          © 2026 Taksh Barot. All rights reserved.
+        </p>
       </footer>
     </main>
   );
