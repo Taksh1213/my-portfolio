@@ -29,7 +29,7 @@ const freshifyProject = {
 function SectionHeading({ icon: Icon, children }) {
   return (
     <div className="print-title flex items-center gap-2 border-b border-slate-800 pb-2">
-      <Icon className="no-print text-lg text-sky-400" aria-hidden="true" />
+      <Icon className="no-print resume-accent text-lg" aria-hidden="true" />
       <h2 className="text-xl font-bold text-white">{children}</h2>
     </div>
   );
@@ -102,6 +102,36 @@ export default function ResumeClient() {
       style={{ backgroundColor: 'var(--page-surface)' }}
     >
       <style jsx global>{`
+        .resume-page .resume-accent {
+          color: var(--brand-color);
+        }
+
+        .resume-page .resume-contact:hover,
+        .resume-page .resume-back-link:hover {
+          color: var(--brand-color);
+        }
+
+        .resume-page .resume-back-link:hover {
+          border-color: var(--brand-color);
+        }
+
+        .resume-page .resume-download {
+          border: 1px solid var(--brand-color);
+          background: var(--brand-color);
+          color: #fffaf3;
+          box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-color) 22%, transparent);
+        }
+
+        .resume-page .resume-download:hover {
+          background: color-mix(in srgb, var(--brand-color) 84%, #ffffff);
+        }
+
+        .resume-page .resume-tag {
+          border: 1px solid color-mix(in srgb, var(--brand-color) 50%, var(--line-color));
+          background: var(--brand-soft);
+          color: var(--brand-color);
+        }
+
         @page {
           size: A4;
           margin: 12mm 15mm;
@@ -284,7 +314,7 @@ export default function ResumeClient() {
       <div className="no-print mx-auto mb-6 flex max-w-4xl flex-wrap items-center justify-between gap-3">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/80 px-4 py-2 text-sm text-slate-300 transition hover:border-sky-500 hover:text-sky-400"
+          className="resume-back-link inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/80 px-4 py-2 text-sm text-slate-300 transition"
         >
           <FaArrowLeft className="h-4 w-4" aria-hidden="true" />
           Back to Portfolio
@@ -293,7 +323,7 @@ export default function ResumeClient() {
         <button
           type="button"
           onClick={() => window.print()}
-          className="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400"
+          className="resume-download inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold shadow-lg transition"
         >
           <FaDownload className="h-4 w-4" aria-hidden="true" />
           Download PDF
@@ -319,7 +349,7 @@ export default function ResumeClient() {
                 {personalInfo.name}
               </h1>
 
-              <p className="print-accent mt-0.5 text-base font-medium text-sky-400 sm:text-lg">
+              <p className="print-accent resume-accent mt-0.5 text-base font-medium sm:text-lg">
                 {personalInfo.title}
               </p>
             </div>
@@ -363,7 +393,7 @@ export default function ResumeClient() {
                           href={project.github}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-sky-400 hover:underline"
+                          className="resume-accent hover:underline"
                         >
                           GitHub
                         </a>
@@ -374,7 +404,7 @@ export default function ResumeClient() {
                           href={project.liveDemo}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-sky-400 hover:underline"
+                          className="resume-accent hover:underline"
                         >
                           Live Demo
                         </a>
@@ -401,7 +431,7 @@ export default function ResumeClient() {
                       {edu.degree}
                     </h3>
 
-                    <span className="print-badge rounded-full border border-sky-900/50 bg-sky-950/50 px-2 py-0.5 text-[10px] text-sky-400">
+                    <span className="print-badge resume-tag rounded-full px-2 py-0.5 text-[10px]">
                       {edu.period}
                     </span>
                   </div>
@@ -454,10 +484,10 @@ export default function ResumeClient() {
                     href={href}
                     target={external ? '_blank' : undefined}
                     rel={external ? 'noreferrer' : undefined}
-                    className="resume-contact print-sub flex items-start gap-2 text-sm text-slate-300 transition hover:text-sky-400"
+                    className="resume-contact print-sub flex items-start gap-2 text-sm text-slate-300 transition"
                   >
                     <Icon
-                      className="no-print mt-0.5 shrink-0 text-sky-400"
+                      className="no-print resume-accent mt-0.5 shrink-0"
                       aria-hidden="true"
                     />
                     <span className="min-w-0 break-words">
@@ -469,7 +499,7 @@ export default function ResumeClient() {
               {personalInfo.address && (
                 <address className="resume-contact print-sub flex items-start gap-2 text-sm not-italic text-slate-300 sm:col-span-2">
                   <FaMapMarkerAlt
-                    className="no-print mt-0.5 shrink-0 text-sky-400"
+                    className="no-print resume-accent mt-0.5 shrink-0"
                     aria-hidden="true"
                   />
                   <span className="min-w-0 break-words">
