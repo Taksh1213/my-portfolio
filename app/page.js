@@ -115,7 +115,14 @@ export default function Home() {
       <nav aria-label="Main navigation" className="portfolio-nav sticky top-0 z-30 border-b border-slate-800/70 bg-slate-950/95 backdrop-blur-xl transition-colors duration-300">
         <div className="portfolio-nav-inner mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 md:py-4 lg:px-10">
           <a href="#home" onClick={closeMenu} className="portfolio-brand shrink-0 text-lg font-semibold tracking-tight text-white">
-            <span className="portfolio-brand-mark" aria-hidden="true">TB</span>
+            <Image
+              src="/icon-192.png"
+              alt=""
+              width={36}
+              height={36}
+              className="portfolio-brand-logo"
+              priority
+            />
             <span>Taksh Barot</span>
           </a>
 
@@ -146,6 +153,7 @@ export default function Home() {
             id="primary-navigation"
             className={`portfolio-menu ${menuOpen ? 'flex' : 'hidden'} w-full flex-col items-center gap-2 border-t border-slate-800 pt-3 text-center md:flex md:w-auto md:flex-row md:gap-4 md:border-0 md:pt-0 md:text-left`}
           >
+            <a href="#home" onClick={closeMenu} className="portfolio-nav-link w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Home</a>
             <a href="#skills" onClick={closeMenu} className="portfolio-nav-link w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Skills</a>
             <a href="#projects" onClick={closeMenu} className="portfolio-nav-link w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Projects</a>
             <a href="#contact" onClick={closeMenu} className="portfolio-nav-link w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Contact</a>
@@ -403,14 +411,12 @@ export default function Home() {
             Have an idea? Let’s make it real.
           </h2>
           <p className="portfolio-contact-description mt-4 max-w-xl text-slate-400 leading-7">
-            I’m available for freelance work, portfolio updates, and full-stack web app development. Reach out by email, WhatsApp, or LinkedIn.
+            I’m available for freelance work, portfolio updates, and full-stack web app development. Reach out by email or WhatsApp.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3 text-slate-300">
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=takshbarot38@gmail.com"
-              target="_blank"
-              rel="noreferrer"
+              href="mailto:takshbarot38@gmail.com?subject=Portfolio%20inquiry"
               aria-label="Email"
               title="Email: takshbarot38@gmail.com"
               className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-900/80 border border-slate-800 hover:text-white hover:bg-sky-500 transition shadow-sm"
@@ -428,28 +434,6 @@ export default function Home() {
             >
               <FaWhatsapp className="h-5 w-5" />
             </a>
-
-            <a
-              href="https://www.linkedin.com/in/taksh-barot"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-900/80 border border-slate-800 text-sky-400 hover:bg-slate-800 transition shadow-sm"
-            >
-              <FaLinkedin className="h-5 w-5" />
-            </a>
-
-            <a
-              href="https://github.com/Taksh1213"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              title="GitHub"
-              className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-slate-900/80 border border-slate-800 text-slate-100 hover:bg-slate-800 transition shadow-sm"
-            >
-              <FaGithub className="h-5 w-5" />
-            </a>
           </div>
         </div>
       </section>
@@ -462,6 +446,28 @@ export default function Home() {
           </a>
           <a href="#contact" className="transition hover:text-white">
             Contact
+          </a>
+        </nav>
+        <nav aria-label="Social links" className="mt-4 flex justify-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/taksh-barot"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+            className="portfolio-social-link inline-flex h-10 w-10 items-center justify-center rounded-full border transition"
+          >
+            <FaLinkedin aria-hidden="true" className="h-4 w-4" />
+          </a>
+          <a
+            href="https://github.com/Taksh1213"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+            className="portfolio-social-link inline-flex h-10 w-10 items-center justify-center rounded-full border transition"
+          >
+            <FaGithub aria-hidden="true" className="h-4 w-4" />
           </a>
         </nav>
         <p className="mt-5 text-xs text-slate-500">

@@ -252,19 +252,13 @@ html[data-theme="light"] .portfolio-site .portfolio-nav {
   letter-spacing: -0.04em;
 }
 
-.portfolio-brand-mark {
-  display: grid;
+.portfolio-brand-logo {
   width: 2.2rem;
   height: 2.2rem;
-  place-items: center;
   border: 1px solid color-mix(in srgb, var(--brand-color) 45%, transparent);
-  border-radius: 0.4rem;
-  background: var(--brand-soft);
-  color: var(--brand-color);
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  border-radius: 0.65rem;
+  object-fit: cover;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
 }
 
 .portfolio-menu {
