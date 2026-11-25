@@ -585,6 +585,11 @@ html[data-theme="light"] .portfolio-site .portfolio-filter-button[aria-pressed="
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
 }
 
+html[data-theme="light"] .portfolio-site .portfolio-project-card:hover {
+  border-color: color-mix(in srgb, var(--brand-color) 55%, var(--line-color));
+  background-color: var(--panel-surface);
+}
+
 .portfolio-project-image {
   border-color: var(--line-color);
   border-radius: 0.7rem;

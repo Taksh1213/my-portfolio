@@ -86,7 +86,7 @@ const projects = [
   {
     title: 'My Portfolio',
     description: 'Personal portfolio website built with Next.js and Tailwind CSS. Showcases skills, projects, contact options, and live deployment on Vercel. Includes animated sections, icon-based contact links, and a responsive design.',
-    image: '/images/portfolio.webp',
+    image: '/images/portfolio.png',
     github: 'https://github.com/Taksh1213/my-portfolio',
     liveDemo: 'https://taksh-dev.vercel.app/',
     category: 'frontend',
@@ -333,7 +333,7 @@ export default function Home() {
                   aria-pressed={activeProjectFilter === tab.id}
                   className={`portfolio-filter-button px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition ${
                     activeProjectFilter === tab.id
-                      ? 'bg-sky-500 text-white shadow-sm'
+                    ? 'text-white shadow-sm'
                       : 'bg-slate-950 hover:bg-slate-800 text-slate-400'
                   }`}
                 >
@@ -346,7 +346,7 @@ export default function Home() {
               {filteredProjects.map((project) => (
                 <article
                   key={project.title}
-                  className="portfolio-project-card group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90 p-4 shadow-sm hover:shadow-md sm:p-6 transition duration-500 hover:-translate-y-1.5 hover:border-sky-500 hover:bg-slate-900/95 animate-fade-up"
+                  className="portfolio-project-card group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90 p-4 shadow-sm hover:shadow-md sm:p-6 transition duration-500 hover:-translate-y-1.5 hover:bg-slate-900/95"
                 >
                   {project.image ? (
                     <div className="portfolio-project-image relative mb-5 aspect-video overflow-hidden rounded-3xl bg-slate-900/90 shadow-inner border border-transparent">
@@ -370,7 +370,7 @@ export default function Home() {
                           href={project.github}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
+                          className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-100 transition shadow-sm"
                         >
                           <FaGithub className="h-4 w-4" /> View on GitHub
                         </a>
@@ -381,7 +381,7 @@ export default function Home() {
                           href={project.liveDemo}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
+                          className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-100 transition shadow-sm"
                         >
                           <FaExternalLinkAlt className="h-4 w-4" /> Live Demo
                         </a>

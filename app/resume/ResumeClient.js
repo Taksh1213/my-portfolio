@@ -195,9 +195,8 @@ export default function ResumeClient() {
             break-inside: avoid;
           }
 
-          .resume-page .print-education {
-            page-break-before: always;
-            break-before: page;
+          .resume-page .print-section.space-y-4 > :not(:first-child) {
+            margin-top: 1.5mm !important;
           }
 
           .resume-page .print-projects .print-card {
