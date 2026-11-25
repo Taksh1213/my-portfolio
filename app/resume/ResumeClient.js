@@ -123,9 +123,17 @@ export default function ResumeClient() {
             border-radius: 0 !important;
             background: #fff !important;
             color: #0f172a !important;
+            font-family: var(--font-manrope), Arial, sans-serif !important;
             overflow: visible !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
+          }
+
+          .resume-page .print-header-title,
+          .resume-page .print-title h2,
+          .resume-page .print-card h3 {
+            font-family: var(--font-manrope), Arial, sans-serif !important;
+            letter-spacing: 0 !important;
           }
 
           .resume-page *,
@@ -216,6 +224,7 @@ export default function ResumeClient() {
             margin: 0 !important;
             color: #0f172a !important;
             font-size: 21pt !important;
+            line-height: 1.1 !important;
           }
 
           .resume-page .print-accent {
