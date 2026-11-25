@@ -189,7 +189,7 @@ html:not(.dark) footer {
   --line-color: #dce5ef;
   --brand-color: #087f8c;
   --brand-soft: rgba(8, 127, 140, 0.1);
-  --font-display: var(--font-space-grotesk), var(--font-manrope), sans-serif;
+  --font-display: var(--font-manrope), sans-serif;
 }
 
 html.dark {
@@ -212,7 +212,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  letter-spacing: -0.045em;
+  letter-spacing: -0.025em;
 }
 
 button,
@@ -367,7 +367,7 @@ html:not(.dark) .portfolio-site .portfolio-hero-card {
   font-size: clamp(2.8rem, 7vw, 5.6rem);
   font-weight: 600;
   line-height: 0.99;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.045em;
 }
 
 .portfolio-headline span {
@@ -597,7 +597,7 @@ html:not(.dark) .portfolio-site .portfolio-filter-button[aria-pressed="true"] {
   color: var(--ink-primary);
   font-family: var(--font-display);
   font-size: 1.35rem;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
 }
 
 .portfolio-project-description {

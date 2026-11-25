@@ -1,15 +1,10 @@
 import './globals.css';
-import { Manrope, Space_Grotesk } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 
 const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-manrope',
-});
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-space-grotesk',
 });
 
 export const metadata = {
@@ -88,7 +83,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" className={`dark ${manrope.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`dark ${manrope.variable}`}>
       <head>
         <meta name="google-site-verification" content="0tBrmiGlRZPSHiHcdwV7S8EzxM2Jh-1gA0DI4NEsTDE" />
         <meta name="keywords" content="Taksh Barot, MERN, React, Next.js, Node.js, Express, MongoDB, Portfolio, Full-stack" />
