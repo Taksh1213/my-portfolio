@@ -176,6 +176,11 @@ export default function ResumeClient() {
             margin: 0 0 4mm !important;
           }
 
+          .resume-page .print-education {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
           .resume-page .print-title {
             display: block !important;
             width: 100% !important;
