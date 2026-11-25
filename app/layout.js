@@ -1,4 +1,11 @@
 import './globals.css';
+import { Manrope } from 'next/font/google';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-manrope',
+});
 
 export const metadata = {
   title: {
@@ -45,6 +52,8 @@ export const metadata = {
   },
 };
 
+import { ThemeProvider } from './components/ThemeProvider';
+
 export default function RootLayout({ children }) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -74,7 +83,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`dark ${manrope.variable}`}>
       <head>
         <meta name="google-site-verification" content="0tBrmiGlRZPSHiHcdwV7S8EzxM2Jh-1gA0DI4NEsTDE" />
         <meta name="keywords" content="Taksh Barot, MERN, React, Next.js, Node.js, Express, MongoDB, Portfolio, Full-stack" />
@@ -82,8 +91,10 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/site.webmanifest" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body style={{ margin: 0, minHeight: '100vh', backgroundColor: '#020617', color: '#e2e8f0' }}>
-        {children}
+      <body className="min-h-screen text-slate-800 dark:text-slate-100" style={{ margin: 0 }}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

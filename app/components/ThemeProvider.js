@@ -7,44 +7,54 @@ const ThemeContext = createContext({
   toggleTheme: () => {},
 });
 
+function applyTheme(theme) {
+  const root = document.documentElement;
+  root.classList.toggle('dark', theme === 'dark');
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme;
+
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  if (themeColor) {
+    themeColor.setAttribute('content', theme === 'dark' ? '#020617' : '#f8fafc');
+  }
+}
+
+function readSavedTheme() {
+  try {
+    const savedTheme = window.localStorage.getItem('theme');
+    return savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : null;
+  } catch (error) {
+    console.error('Unable to read the saved theme preference.', error);
+    return null;
+  }
+}
+
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Read from localStorage or system preference
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = readSavedTheme();
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
     const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
     setTheme(initialTheme);
-    
-    if (initialTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.colorScheme = 'dark';
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.colorScheme = 'light';
-    }
-    
+    applyTheme(initialTheme);
     setMounted(true);
   }, []);
 
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
-    localStorage.setItem('theme', nextTheme);
-    
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.colorScheme = 'dark';
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.colorScheme = 'light';
+
+    applyTheme(nextTheme);
+    try {
+      window.localStorage.setItem('theme', nextTheme);
+    } catch (error) {
+      console.error('Unable to save the theme preference.', error);
     }
   };
 
-  // Avoid Hydration mismatch issues by rendering children only after mounting
   return (
     <ThemeContext.Provider value={{ theme: mounted ? theme : 'dark', toggleTheme }}>
       {children}

@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: light;
-  font-family: 'Aptos', 'Segoe UI Variable', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-manrope), 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
   --bg-radial: radial-gradient(circle at top, rgba(14, 165, 233, 0.1), transparent 30%);
   --bg-linear: linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
 }

@@ -118,11 +118,12 @@ export default function Home() {
             Taksh Barot
           </a>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 md:hidden">
             <button
               type="button"
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              aria-pressed={theme === 'dark'}
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 transition hover:border-sky-400 hover:text-sky-400 ${theme === 'dark' ? 'text-amber-300' : 'text-slate-700'}`}
             >
@@ -142,12 +143,22 @@ export default function Home() {
 
           <div
             id="primary-navigation"
-            className={`${menuOpen ? 'flex' : 'hidden'} w-full flex-col gap-1 border-t border-slate-800 pt-3 md:flex md:w-auto md:flex-row md:items-center md:gap-5 md:border-0 md:pt-0`}
+            className={`${menuOpen ? 'flex' : 'hidden'} w-full flex-col items-center gap-2 border-t border-slate-800 pt-3 text-center md:flex md:w-auto md:flex-row md:gap-4 md:border-0 md:pt-0 md:text-left`}
           >
-            <a href="#skills" onClick={closeMenu} className="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white">Skills</a>
-            <a href="#projects" onClick={closeMenu} className="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white">Projects</a>
-            <a href="#contact" onClick={closeMenu} className="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white">Contact</a>
-            <div className="flex gap-2 pt-2 md:pt-0">
+            <a href="#skills" onClick={closeMenu} className="w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Skills</a>
+            <a href="#projects" onClick={closeMenu} className="w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Projects</a>
+            <a href="#contact" onClick={closeMenu} className="w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Contact</a>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              aria-pressed={theme === 'dark'}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              className={`hidden h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 transition hover:border-sky-400 hover:text-sky-400 md:inline-flex ${theme === 'dark' ? 'text-amber-300' : 'text-slate-700'}`}
+            >
+              {theme === 'dark' ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}
+            </button>
+            <div className="flex w-full justify-center gap-2 pt-2 md:w-auto md:pt-0">
               <a
                 href="https://www.linkedin.com/in/taksh-barot"
                 target="_blank"
