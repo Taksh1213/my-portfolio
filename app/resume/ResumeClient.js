@@ -300,7 +300,10 @@ export default function ResumeClient() {
         </button>
       </div>
 
-      <article className="print-container mx-auto max-w-4xl rounded-3xl border border-slate-800/80 bg-slate-900/80 p-6 shadow-2xl shadow-slate-950/50 backdrop-blur-xl sm:p-10">
+      <article
+        className="print-container mx-auto max-w-4xl rounded-3xl border border-slate-800/80 p-6 shadow-2xl shadow-slate-950/50 backdrop-blur-xl sm:p-10"
+        style={{ backgroundColor: 'var(--panel-surface)' }}
+      >
         <header className="resume-header mb-6 flex flex-col items-center gap-6 border-b border-slate-800/80 pb-6 sm:flex-row sm:items-start">
           {personalInfo.profilePhoto && (
             <img
