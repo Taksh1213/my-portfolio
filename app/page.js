@@ -110,12 +110,13 @@ export default function Home() {
   );
 
   return (
-    <main className="min-h-screen transition-colors duration-300 bg-slate-950 text-slate-100">
+    <main className="portfolio-site min-h-screen transition-colors duration-300 bg-slate-950 text-slate-100">
       {/* Navbar */}
-      <nav aria-label="Main navigation" className="sticky top-0 z-30 border-b border-slate-800/70 bg-slate-950/95 backdrop-blur-xl transition-colors duration-300">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 md:py-4 lg:px-10">
-          <a href="#home" onClick={closeMenu} className="shrink-0 text-lg font-semibold tracking-tight text-white">
-            Taksh Barot
+      <nav aria-label="Main navigation" className="portfolio-nav sticky top-0 z-30 border-b border-slate-800/70 bg-slate-950/95 backdrop-blur-xl transition-colors duration-300">
+        <div className="portfolio-nav-inner mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 md:py-4 lg:px-10">
+          <a href="#home" onClick={closeMenu} className="portfolio-brand shrink-0 text-lg font-semibold tracking-tight text-white">
+            <span className="portfolio-brand-mark" aria-hidden="true">TB</span>
+            <span>Taksh Barot</span>
           </a>
 
           <div className="flex items-center gap-2 md:hidden">
@@ -125,7 +126,7 @@ export default function Home() {
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               aria-pressed={theme === 'dark'}
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 transition hover:border-sky-400 hover:text-sky-400 ${theme === 'dark' ? 'text-amber-300' : 'text-slate-700'}`}
+              className={`portfolio-icon-button inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 transition hover:border-sky-400 hover:text-sky-400 ${theme === 'dark' ? 'text-amber-300' : 'text-slate-700'}`}
             >
               {theme === 'dark' ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}
             </button>
@@ -135,7 +136,7 @@ export default function Home() {
               aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={menuOpen}
               aria-controls="primary-navigation"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 text-slate-100 transition hover:border-sky-400 hover:text-sky-400 md:hidden"
+              className="portfolio-icon-button inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 text-slate-100 transition hover:border-sky-400 hover:text-sky-400 md:hidden"
             >
               {menuOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
             </button>
@@ -143,18 +144,18 @@ export default function Home() {
 
           <div
             id="primary-navigation"
-            className={`${menuOpen ? 'flex' : 'hidden'} w-full flex-col items-center gap-2 border-t border-slate-800 pt-3 text-center md:flex md:w-auto md:flex-row md:gap-4 md:border-0 md:pt-0 md:text-left`}
+            className={`portfolio-menu ${menuOpen ? 'flex' : 'hidden'} w-full flex-col items-center gap-2 border-t border-slate-800 pt-3 text-center md:flex md:w-auto md:flex-row md:gap-4 md:border-0 md:pt-0 md:text-left`}
           >
-            <a href="#skills" onClick={closeMenu} className="w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Skills</a>
-            <a href="#projects" onClick={closeMenu} className="w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Projects</a>
-            <a href="#contact" onClick={closeMenu} className="w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Contact</a>
+            <a href="#skills" onClick={closeMenu} className="portfolio-nav-link w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Skills</a>
+            <a href="#projects" onClick={closeMenu} className="portfolio-nav-link w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Projects</a>
+            <a href="#contact" onClick={closeMenu} className="portfolio-nav-link w-full rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-slate-900 hover:text-white md:w-auto">Contact</a>
             <button
               type="button"
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               aria-pressed={theme === 'dark'}
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              className={`hidden h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 transition hover:border-sky-400 hover:text-sky-400 md:inline-flex ${theme === 'dark' ? 'text-amber-300' : 'text-slate-700'}`}
+              className={`portfolio-icon-button hidden h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/80 transition hover:border-sky-400 hover:text-sky-400 md:inline-flex ${theme === 'dark' ? 'text-amber-300' : 'text-slate-700'}`}
             >
               {theme === 'dark' ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}
             </button>
@@ -163,7 +164,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/taksh-barot"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+                className="portfolio-social-link inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
               >
                 <FaLinkedin aria-hidden="true" className="h-4 w-4 text-sky-400" /> LinkedIn
               </a>
@@ -171,7 +172,7 @@ export default function Home() {
                 href="https://github.com/Taksh1213"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+                className="portfolio-social-link inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
               >
                 <FaGithub aria-hidden="true" className="h-4 w-4" /> GitHub
               </a>
@@ -181,65 +182,71 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
-        <div className="mx-auto max-w-6xl rounded-[2rem] bg-slate-900/80 p-5 sm:p-8 shadow-2xl shadow-slate-950/40 border border-white/10 backdrop-blur-xl transition-colors duration-300">
-          <div className="grid gap-6 sm:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-            <div className="min-w-0 space-y-5 sm:space-y-6">
-              <p className="break-words text-xs font-semibold uppercase leading-relaxed tracking-[0.2em] sm:tracking-[0.3em] text-sky-400">
+      <section id="home" className="portfolio-section portfolio-hero scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
+        <div className="portfolio-hero-card mx-auto max-w-6xl rounded-[2rem] bg-slate-900/80 p-5 sm:p-8 shadow-2xl shadow-slate-950/40 border border-white/10 backdrop-blur-xl transition-colors duration-300">
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+            <div className="portfolio-hero-copy min-w-0 space-y-5 sm:space-y-6">
+              <p className="portfolio-role break-words text-xs font-semibold uppercase leading-relaxed tracking-[0.2em] sm:tracking-[0.3em] text-sky-400">
+                <span className="portfolio-status-dot" aria-hidden="true" />
                 <TypingEffect phrases={rolePhrases} />
               </p>
 
-              <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-                Hi, I’m <span className="text-sky-400">Taksh Barot</span>.
+              <h1 className="portfolio-headline text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+                I build digital <span className="text-sky-400">experiences.</span>
               </h1>
 
-              <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-                I build modern web apps with React.js, Next.js, Tailwind CSS, Node.js, Express, and MongoDB. I enjoy creating polished portfolio sites, dashboards, and full-stack solutions with smooth animations.
+              <p className="portfolio-lede max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+                I’m Taksh Barot, a full-stack developer focused on thoughtful interfaces and reliable web applications. I work across React, Next.js, Node.js, and MongoDB to turn ideas into useful products.
               </p>
 
-              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <div className="portfolio-actions flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <Link
                   href="/resume"
                   target="_blank"
-                  className="inline-flex items-center justify-center rounded-2xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 shadow-md shadow-sky-500/20"
+                  className="portfolio-primary inline-flex items-center justify-center rounded-2xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-400 shadow-md shadow-sky-500/20"
                 >
-                  Download Resume
+                  View my resume <span aria-hidden="true">↗</span>
                 </Link>
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/90 px-6 py-3 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
+                  className="portfolio-secondary inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/90 px-6 py-3 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
                 >
-                  Contact Me
+                  Let’s talk
                 </a>
 
                 <a
                   href="https://github.com/Taksh1213"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/90 px-6 py-3 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
+                  className="portfolio-secondary inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/90 px-6 py-3 text-sm text-slate-100 transition hover:border-sky-400 hover:text-sky-400 shadow-sm"
                 >
                   <FaGithub className="h-4 w-4" /> View GitHub
                 </a>
               </div>
+              <div className="portfolio-proof" aria-label="Portfolio highlights">
+                <span><strong>05</strong> selected projects</span>
+                <span><strong>12</strong> core technologies</span>
+                <span><strong>Full-stack</strong> development</span>
+              </div>
             </div>
 
-            <div className="rounded-[2rem] border border-slate-800 bg-slate-950/90 p-5 sm:p-8 text-slate-300 shadow-inner animate-fade-left delay-150 transition-colors duration-300">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
-                What I build
+            <div className="portfolio-services rounded-[2rem] border border-slate-800 bg-slate-950/90 p-5 sm:p-8 text-slate-300 shadow-inner animate-fade-left delay-150 transition-colors duration-300">
+              <p className="portfolio-card-kicker text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
+                What I bring to a project
               </p>
 
-              <ul className="mt-4 grid gap-3 text-sm min-[390px]:grid-cols-2 sm:mt-6">
-                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
+              <ul className="portfolio-service-list mt-4 grid gap-3 text-sm min-[390px]:grid-cols-2 sm:mt-6">
+                <li className="portfolio-service-item rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   React.js apps with interactive UI
                 </li>
-                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
+                <li className="portfolio-service-item rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   Next.js landing pages and portfolios
                 </li>
-                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
+                <li className="portfolio-service-item rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   REST APIs with Node.js and Express
                 </li>
-                <li className="rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
+                <li className="portfolio-service-item rounded-3xl border border-slate-800 bg-slate-900/80 px-4 py-4 shadow-sm text-slate-300">
                   MongoDB data storage and dashboards
                 </li>
               </ul>
@@ -249,28 +256,29 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
+      <section id="skills" className="portfolio-section scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-6xl space-y-8">
-          <div className="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="portfolio-content-card rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
+            <div className="portfolio-section-heading flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Skills</p>
-                <h2 className="mt-3 text-3xl font-semibold text-white">
+                <p className="portfolio-eyebrow text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">01 / Skills</p>
+                <h2 className="portfolio-section-title mt-3 text-3xl font-semibold text-white">
                   Core technologies I use daily
                 </h2>
               </div>
 
-              <p className="max-w-2xl text-slate-400">
+              <p className="portfolio-section-description max-w-2xl text-slate-400">
                 I build React.js and Next.js experiences with Tailwind CSS. I also write backend code with Node.js, Express, and MongoDB for full-stack apps.
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2 border-b border-slate-800 pb-4">
+            <div className="portfolio-filter-row mt-8 flex flex-wrap gap-2 border-b border-slate-800 pb-4">
               {['all', 'frontend', 'backend', 'database'].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveSkillFilter(filter)}
-                  className={`px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition ${
+                  aria-pressed={activeSkillFilter === filter}
+                  className={`portfolio-filter-button px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition ${
                     activeSkillFilter === filter
                       ? 'bg-sky-500 text-white shadow-sm'
                       : 'bg-slate-950 hover:bg-slate-800 text-slate-400'
@@ -285,7 +293,7 @@ export default function Home() {
               {filteredSkills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="group rounded-3xl border border-slate-800 bg-slate-950/80 px-2.5 py-4 text-sm sm:px-5 sm:py-6 sm:text-base text-slate-200 transition hover:-translate-y-1 hover:border-sky-500 hover:bg-slate-900/95 shadow-sm"
+                  className="portfolio-skill-card group rounded-3xl border border-slate-800 bg-slate-950/80 px-2.5 py-4 text-sm sm:px-5 sm:py-6 sm:text-base text-slate-200 transition hover:-translate-y-1 hover:border-sky-500 hover:bg-slate-900/95 shadow-sm"
                 >
                   <div className="flex items-center gap-2 sm:gap-3">
                     <span className="shrink-0 transition-transform group-hover:scale-110">{skill.icon}</span>
@@ -299,21 +307,21 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
+      <section id="projects" className="portfolio-section scroll-mt-32 px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-6xl space-y-8">
-          <div className="rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="portfolio-content-card rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
+            <div className="portfolio-section-heading flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Projects</p>
-                <h2 className="mt-3 text-3xl font-semibold text-white">Selected work</h2>
+                <p className="portfolio-eyebrow text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">02 / Projects</p>
+                <h2 className="portfolio-section-title mt-3 text-3xl font-semibold text-white">Selected work</h2>
               </div>
 
-              <p className="max-w-xl text-slate-400">
+              <p className="portfolio-section-description max-w-xl text-slate-400">
                 These are the types of React and full-stack projects I enjoy building with polished interactions and clean UI.
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-2 border-b border-slate-800 pb-4">
+            <div className="portfolio-filter-row mt-8 flex flex-wrap gap-2 border-b border-slate-800 pb-4">
               {[
                 { id: 'all', label: 'All Projects' },
                 { id: 'fullstack', label: 'Full-Stack' },
@@ -322,7 +330,8 @@ export default function Home() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveProjectFilter(tab.id)}
-                  className={`px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition ${
+                  aria-pressed={activeProjectFilter === tab.id}
+                  className={`portfolio-filter-button px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition ${
                     activeProjectFilter === tab.id
                       ? 'bg-sky-500 text-white shadow-sm'
                       : 'bg-slate-950 hover:bg-slate-800 text-slate-400'
@@ -333,14 +342,14 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="portfolio-project-grid mt-8 grid gap-6 md:grid-cols-2">
               {filteredProjects.map((project) => (
                 <article
                   key={project.title}
-                  className="group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90 p-4 shadow-sm hover:shadow-md sm:p-6 transition duration-500 hover:-translate-y-1.5 hover:border-sky-500 hover:bg-slate-900/95 animate-fade-up"
+                  className="portfolio-project-card group overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/90 p-4 shadow-sm hover:shadow-md sm:p-6 transition duration-500 hover:-translate-y-1.5 hover:border-sky-500 hover:bg-slate-900/95 animate-fade-up"
                 >
                   {project.image ? (
-                    <div className="relative mb-5 aspect-video overflow-hidden rounded-3xl bg-slate-900/90 shadow-inner border border-transparent">
+                    <div className="portfolio-project-image relative mb-5 aspect-video overflow-hidden rounded-3xl bg-slate-900/90 shadow-inner border border-transparent">
                       <Image
                         src={project.image}
                         alt={`${project.title} screenshot`}
@@ -351,8 +360,8 @@ export default function Home() {
                     </div>
                   ) : null}
 
-                  <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                  <p className="mt-3 text-slate-400">{project.description}</p>
+                  <h3 className="portfolio-project-title text-xl font-semibold text-white">{project.title}</h3>
+                  <p className="portfolio-project-description mt-3 text-slate-400">{project.description}</p>
 
                   {project.github || project.liveDemo ? (
                     <div className="mt-6 flex flex-wrap gap-3">
@@ -387,13 +396,13 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="scroll-mt-32 px-4 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-10 lg:px-10">
-        <div className="mx-auto max-w-6xl rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">Contact</p>
-          <h2 className="mt-3 text-3xl font-semibold text-white">
-            Let’s start your next React project.
+      <section id="contact" className="portfolio-section scroll-mt-32 px-4 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-10 lg:px-10">
+        <div className="portfolio-contact-card mx-auto max-w-6xl rounded-[2rem] border border-slate-800 bg-slate-900/80 p-5 sm:p-8 shadow-xl shadow-slate-950/20 animate-fade-up transition-colors duration-300">
+          <p className="portfolio-eyebrow text-sm font-semibold uppercase tracking-[0.3em] text-sky-400">03 / Contact</p>
+          <h2 className="portfolio-contact-title mt-3 text-3xl font-semibold text-white">
+            Have an idea? Let’s make it real.
           </h2>
-          <p className="mt-4 max-w-xl text-slate-400 leading-7">
+          <p className="portfolio-contact-description mt-4 max-w-xl text-slate-400 leading-7">
             I’m available for freelance work, portfolio updates, and full-stack web app development. Reach out by email, WhatsApp, or LinkedIn.
           </p>
 
@@ -445,7 +454,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-800 bg-slate-950/95 px-6 py-8 text-center">
+      <footer className="portfolio-footer border-t border-slate-800 bg-slate-950/95 px-6 py-8 text-center">
         <p className="text-sm font-semibold text-slate-100">Taksh Barot</p>
         <nav aria-label="Footer navigation" className="mt-3 flex justify-center gap-4 text-sm text-slate-400">
           <a href="#home" className="transition hover:text-white">
