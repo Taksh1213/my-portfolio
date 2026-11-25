@@ -97,7 +97,10 @@ export default function ResumeClient() {
   }, []);
 
   return (
-    <main className="resume-page min-h-screen bg-slate-950 px-4 py-6 text-slate-100 sm:px-6 lg:px-8">
+    <main
+      className="resume-page min-h-screen px-4 py-6 text-slate-100 sm:px-6 lg:px-8"
+      style={{ backgroundColor: 'var(--page-surface)' }}
+    >
       <style jsx global>{`
         @page {
           size: A4;
