@@ -83,11 +83,11 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" data-theme="dark" className={`dark ${manrope.variable}`}>
+    <html lang="en" data-theme="light" className={manrope.variable}>
       <head>
         <meta name="google-site-verification" content="0tBrmiGlRZPSHiHcdwV7S8EzxM2Jh-1gA0DI4NEsTDE" />
         <meta name="keywords" content="Taksh Barot, MERN, React, Next.js, Node.js, Express, MongoDB, Portfolio, Full-stack" />
-        <meta name="theme-color" content="#020617" />
+        <meta name="theme-color" content="#f5f1e8" />
         <link rel="manifest" href="/site.webmanifest" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
